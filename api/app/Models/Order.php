@@ -13,4 +13,16 @@ class Order extends Model
     protected $fillables = [
         'product', 'user', 'fulfiled', 'amount', 'price',
     ];
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product');
+    }
+
+    // Many-to-one relationship with the User model
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

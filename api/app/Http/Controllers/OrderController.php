@@ -49,27 +49,44 @@ class OrderController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user) {
-            return $this->sendError();
-        }
-
-        if (!$user->hasPermission('Insert Order')) {
+        if (!$user || !$user->hasPermission('Insert Order')) {
             return $this->sendError();
         }
 
         $validator = Validator::make($request->all(), [
             'price' => 'required|integer|min:0.01',
             'amount' => 'required|integer|min:1',
-            'product' => 'required|exists:products,id', // Ensure 'product' field exists in the 'products' table and matches an 'id'
+            'offer' => 'exists:offers,id',
+            'product' => 'required|exists:products,id',
         ]);
 
         if ($validator->fails()) {
             return $this->sendError("Validation Error", $validator->errors(), 422);
         }
 
-        $validator['user'] = $user->id;
-
         $validatedData = $validator->validated();
+        $validatedData['user'] = $user->id;
+
+        if ($validatedData->offer) {
+            $offer = Offer::find($validatedData->offer);
+            $productoffers = ProductOffer::where('offer', $offer->id)->get();
+
+            $status = false;
+
+            foreach ($productoffers as $productoffer) {
+                if ($productoffer->product == $validatedData->product) {
+                    $status = true;
+                }
+            }
+
+            if (!$status) {
+                return $this->sendError('This offer is not valid for this product!');
+            }
+
+            if ($offer->valid_till < now()) {
+                return $this->sendError('Offer has been expired!');
+            }
+        }
 
         $order = Order::create($validatedData);
         return $this->sendResponse("Order {$order->id} Successfully placed!");
@@ -128,6 +145,26 @@ class OrderController extends BaseController
 
         $validatedData = $validator->validated();
 
+        if ($validatedData->offer) {
+            $offer = Offer::find($validatedData->offer);
+            $productoffers = ProductOffer::where('offer', $offer->id)->get();
+
+            $status = false;
+
+            foreach ($productoffers as $productoffer) {
+                if ($productoffer->product == $validatedData->product) {
+                    $status = true;
+                }
+            }
+
+            if (!$status) {
+                return $this->sendError('This offer is not valid for this product!');
+            }
+
+            if ($offer->valid_till < now()) {
+                return $this->sendError('Offer has been expired!');
+            }
+        }
         $order->update($validatedData);
 
         return $this->sendResponse("Order {$order->id} successfully updated!");
@@ -165,7 +202,7 @@ class OrderController extends BaseController
             return $this->sendError('Invalid Order Id!');
         }
         if ($order->fulfiled) {
-            return $this->sendError("Order is fulfiled can't be deleted");
+            return $this->sendError("Order fulfiled can't remove");
         }
 
         $order->delete();

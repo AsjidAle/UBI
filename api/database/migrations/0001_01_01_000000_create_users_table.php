@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->softDelete();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

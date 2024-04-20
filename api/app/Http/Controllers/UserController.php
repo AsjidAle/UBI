@@ -23,6 +23,18 @@ class UserController extends BaseController
         return $this->sendResponse($users);
     }
 
+    public function me()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return $this->sendError();
+        }
+
+        $me = User::with(['roles', 'permissions'])->find($user->id);
+        return $this->sendResponse($me);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -46,7 +46,6 @@ class OfferController extends BaseController
             'descritpion' => 'required|string',
             'discount' => 'required|decimal|min:0.01',
             'valid_till' => 'required|date:after,now()',
-            'product' => 'required|exists:products,id',
         ]);
 
         if ($validator->fails()) {
@@ -93,7 +92,6 @@ class OfferController extends BaseController
             'descritpion' => 'string',
             'discount' => 'decimal|min:0.01',
             'valid_till' => 'date:after,now()',
-            'product' => 'exists:products,id',
         ]);
 
         if($validator->fails()){

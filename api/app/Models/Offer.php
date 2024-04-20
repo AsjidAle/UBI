@@ -15,6 +15,10 @@ class Offer extends Model
         'discount',
         'valid_till',
         'description',
-        'product',
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_offers', 'offer', 'product');
+    }
 }

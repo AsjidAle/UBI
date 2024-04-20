@@ -15,11 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('discount', 4, 2); //In percentage
+            $table->decimal('discount', 4, 2)->unsigned(); //In percentage
             $table->timestamp('valid_till');
-            $table->softDelete();
-            $table->unsignedBigInteger('product');
-            $table->foreign('product')->references('id')->on('products');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

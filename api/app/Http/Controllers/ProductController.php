@@ -18,6 +18,18 @@ class ProductController extends BaseController
         return $this->sendResponse($products);
     }
 
+    public function total()
+    {
+        $user = auth()->user();
+
+        if (!$user || $user->hasPermission('View Product')) {
+            return $this->sendError();
+        }
+        
+        $products = Product::all();
+        return $this->sendResponse($products);
+    }
+
     public function all()
     {
         $user = auth()->user();

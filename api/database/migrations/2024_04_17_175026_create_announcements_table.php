@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('announcement');
             $table->timestamp('valid_till');
-            $table->softDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

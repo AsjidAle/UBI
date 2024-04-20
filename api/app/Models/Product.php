@@ -16,4 +16,19 @@ class Product extends Model
         'price',
         'description',
     ];
+
+    public function offers()
+    {
+        return $this->belongsToMany(Offer::class, 'product_offers', 'product', 'offer');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

@@ -22,9 +22,7 @@ return new class extends Migration
         Permission::create(['name' => 'Create User'])->assignRole($executive);
         Permission::create(['name' => 'Update User'])->assignRole($executive);
         Permission::create(['name' => 'Delete User'])->assignRole($executive);
-        // Permission::create(['name' => 'Create Roles'])->assignRole($executive);
         Permission::create(['name' => 'View Roles'])->assignRole($executive);
-        // Permission::create(['name' => 'Update Roles'])->assignRole($executive);
         Permission::create(['name' => 'View Permissions'])->assignRole($executive);
         Permission::create(['name' => 'Update Permissions'])->assignRole($executive);
         // Permission::create(['name' => 'Update Roles'])->assignRole($executive);
@@ -44,11 +42,6 @@ return new class extends Migration
         Permission::create(['name' => 'Insert Order'])->assignRole($executive);
         Permission::create(['name' => 'Update Order Status'])->assignRole($executive);
 
-        User::create([
-            'name' => 'Asjid Ali',
-            'username' => 'asjidale',
-            'email' => 'asjidale@gmail.com',
-        ]);
     }
 
     /**
