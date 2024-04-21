@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamp('fulfiled')->nullable();
             $table->decimal('price', 10, 2)->unsigned(); //In percentage
             $table->unsignedBigInteger('amount');
-            // $table->text('address');
             $table->foreign('product')->references('id')->on('products');
             $table->foreign('user')->references('id')->on('users');
             $table->softDeletes();
