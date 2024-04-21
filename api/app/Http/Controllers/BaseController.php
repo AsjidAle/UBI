@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class BaseController extends Controller
 {
-    public function sendResponse($result, $error = "", $status = 200)
+    public function sendResponse($result, $message = "", $status = 200)
     {
         $response = [
             'success' => true,
@@ -15,10 +15,10 @@ class BaseController extends Controller
             $response['message'] = $message;
         }
 
-        return response()->json($response, $code);
+        return response()->json($response, $status);
     }
 
-    public function sendError($error, $errorMessages, $code = 404)
+    public function sendError($error, $errorMessages, $status = 401)
     {
         $response = [
             'success' => false,
@@ -29,6 +29,6 @@ class BaseController extends Controller
             $response['errors'] = $errorMessages;
         }
 
-        return response()->json($response, $code);
+        return response()->json($response, $status);
     }
 }
