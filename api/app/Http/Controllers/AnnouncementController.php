@@ -54,6 +54,7 @@ class AnnouncementController extends BaseController
 
         $validator = Validator::make($request->all(), [
             'announcement' => 'required|string',
+            'title' => 'required|string',
             'valid_till' => 'required|date|after:now',
         ]);
 
@@ -87,24 +88,22 @@ class AnnouncementController extends BaseController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, $id)
     {
+
+        if (!$user && !$user->hasPermission('Update Announcement')) {
+            return $this->sendError();
+        }
+        $announcement = Announcement::find($id);
         if (!$announcement) {
             return $this->sendError('Invalid Announcement Id!');
         }
 
         $user = auth()->user();
 
-        if (!$user) {
-            return $this->sendError();
-        }
-
-        if (!$user->hasPermission('Update Announcement')) {
-            return $this->sendError();
-        }
-
         $validator = Validator::make($request->all(), [
             'announcement' => 'string',
+            'title' => 'string',
             'valid_till' => 'date|after:now',
         ]);
 

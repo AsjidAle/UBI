@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('announcement');
             $table->timestamp('valid_till');
             $table->softDeletes();
