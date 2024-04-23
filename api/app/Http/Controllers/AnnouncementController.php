@@ -16,7 +16,7 @@ class AnnouncementController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('View Announcements')) {
+        if (!$user || $user->hasPermissionTo('View Announcements')) {
             return $this->sendError();
         }
 
@@ -48,7 +48,7 @@ class AnnouncementController extends BaseController
             return $this->sendError();
         }
 
-        if (!$user->hasPermission('Insert Announcement')) {
+        if (!$user->hasPermissionTo('Insert Announcement')) {
             return $this->sendError();
         }
 
@@ -91,7 +91,7 @@ class AnnouncementController extends BaseController
     public function update(Request $request, $id)
     {
 
-        if (!$user && !$user->hasPermission('Update Announcement')) {
+        if (!$user && !$user->hasPermissionTo('Update Announcement')) {
             return $this->sendError();
         }
         $announcement = Announcement::find($id);
@@ -127,7 +127,7 @@ class AnnouncementController extends BaseController
             return $this->sendError();
         }
 
-        if (!$user->hasPermission('Delete Announcement')) {
+        if (!$user->hasPermissionTo('Delete Announcement')) {
             return $this->sendError();
         }
 

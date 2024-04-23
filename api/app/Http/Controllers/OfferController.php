@@ -22,7 +22,7 @@ class OfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('View Offer')) {
+        if (!$user || !$user->hasPermissionTo('View Offer')) {
             return $this->sendError();
         }
 
@@ -37,7 +37,7 @@ class OfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('Insert Offer')) {
+        if (!$user || $user->hasPermissionTo('Insert Offer')) {
             return $this->sendError();
         }
 
@@ -77,7 +77,7 @@ class OfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('Update Offer')) {
+        if (!$user || $user->hasPermissionTo('Update Offer')) {
             return $this->sendError();
         }
 
@@ -109,7 +109,7 @@ class OfferController extends BaseController
     {
         $user = auth()->user();
 
-        if(!$user || !$user->hasPermission('Delete Offer')){
+        if(!$user || !$user->hasPermissionTo('Delete Offer')){
             return $this->sendError();
         }
 

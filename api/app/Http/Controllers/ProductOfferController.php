@@ -17,7 +17,7 @@ class ProductOfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('View Product Offer')) {
+        if (!$user || !$user->hasPermissionTo('View Product Offer')) {
             return $this->sendError();
         }
 
@@ -32,7 +32,7 @@ class ProductOfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission) {
+        if (!$user || !$user->hasPermissionTo) {
             return $this->sendError();
         }
 
@@ -75,7 +75,7 @@ class ProductOfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('Update Product Offer')) {
+        if (!$user || !$user->hasPermissionTo('Update Product Offer')) {
             return $this->sendError();
         }
 
@@ -110,7 +110,7 @@ class ProductOfferController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('Delete Product Offer')) {
+        if (!$user || !$user->hasPermissionTo('Delete Product Offer')) {
             return $this->sendError();
         }
 

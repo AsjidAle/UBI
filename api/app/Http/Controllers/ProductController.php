@@ -22,7 +22,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('View Product')) {
+        if (!$user || $user->hasPermissionTo('View Product')) {
             return $this->sendError();
         }
         
@@ -34,7 +34,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('View Product')) {
+        if (!$user || $user->hasPermissionTo('View Product')) {
             return $this->sendError();
         }
 
@@ -49,7 +49,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('Insert Product')) {
+        if (!$user || !$user->hasPermissionTo('Insert Product')) {
             return $this->sendError();
         }
 
@@ -90,7 +90,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('Update Product')) {
+        if (!$user || $user->hasPermissionTo('Update Product')) {
             return $this->sendError();
         }
 
@@ -124,7 +124,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('Delete Product')) {
+        if (!$user || $user->hasPermissionTo('Delete Product')) {
             return $this->sendError();
         }
 

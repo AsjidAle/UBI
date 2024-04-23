@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +16,7 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('View User')) {
+        if (!$user || !$user->hasPermissionTo('View User')) {
             return $this->sendError();
         }
         $users = User::withTrashed()->paginate(100);
@@ -42,7 +43,7 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('Insert User')) {
+        if (!$user || !$user->hasPermissionTo('Insert User')) {
             return $this->sendError();
         }
 
@@ -72,11 +73,11 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('View User')) {
+        if (!$user || !$user->hasPermissionTo('View User')) {
             return $this->sendError();
         }
 
-        $targetUser = User::with(['roles', 'permissions'])->find($id);
+        $targetUser = User::with(['roles'])->find($id);
 
         if (!$targetUser) {
             return $this->sendError("User not found!");
@@ -125,7 +126,7 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || ($id && !$user->hasPermission('Delete User'))) {
+        if (!$user || ($id && !$user->hasPermissionTo('Delete User'))) {
             return $this->sendError();
         }
 

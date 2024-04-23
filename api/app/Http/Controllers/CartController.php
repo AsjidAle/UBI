@@ -14,7 +14,7 @@ class CartController extends BaseController
      */
     public function index()
     {
-        if (!auth()->user()->hasPermission('View Carts')) {
+        if (!auth()->user()->hasPermissionTo('View Carts')) {
             return $this->sendError();
         }
         $cart = Cart::with(['user', 'product'])->all();
@@ -79,7 +79,7 @@ class CartController extends BaseController
             return $this->sendError('Invalid Id', 404);
         }
 
-        if (!$user->hasPermission('View Cart') || $cart->user != $user->id) {
+        if (!$user->hasPermissionTo('View Cart') || $cart->user != $user->id) {
             return $this->sendError();
         }
         return $this->sendError($cart);
