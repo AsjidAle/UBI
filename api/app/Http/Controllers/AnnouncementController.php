@@ -26,7 +26,7 @@ class AnnouncementController extends BaseController
 
     public function index()
     {
-        $user = $auth()->user();
+        $user = auth()->user();
 
         if (!$user) {
             return $this->sendError();
