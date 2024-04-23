@@ -17,7 +17,8 @@ class AuthController extends BaseController
             $user = Auth::user();
             $user['permission'] = $user->getAllPermissions();
             $token = $user->createToken('platform')->accessToken;
-            return $this->sendResponse($user, $token);
+            $user['token'] = $token;
+            return $this->sendResponse($user);
         }
         return $this->sendError('Invalid Credentails!', 401);
 
