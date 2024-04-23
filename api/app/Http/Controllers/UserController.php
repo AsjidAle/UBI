@@ -132,12 +132,17 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
-        if (!$id) {
-            $user->delete();
-        } else {
-            $user = User::find($id);
-            $user->delete();
+        $user = User::find($id);
+
+        if (!$user) {
+            return $this->sendError('Invalid User ID');
         }
+
+        if ($user->id == $id) {
+            return $this->sendError("You can't deactivate own account!", 404);
+        }
+        $user->delete();
+
         return $this->sendResponse('Account deactivated Successfully!');
 
         $user = $id ? User::find($id) : auth()->user();
