@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -23,6 +24,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('product', ProductController::class);
     Route::resource('productoffer', ProductOfferController::class);
 
+    Route::get('dashboard', [DashboardController::class, 'dashboard']);
     Route::get('myCart', [CartController::class, 'myCart']);
     Route::get('alloffer', [OfferController::class, 'all']);
     Route::get('allprodut', [ProductController::class, 'all']);
