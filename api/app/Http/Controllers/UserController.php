@@ -19,7 +19,7 @@ class UserController extends BaseController
         if (!$user || !$user->hasPermissionTo('View User')) {
             return $this->sendError();
         }
-        $users = User::withTrashed()->paginate(100);
+        $users = User::withTrashed()->with('roles')->paginate(100);
 
         return $this->sendResponse($users);
     }
