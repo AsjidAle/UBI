@@ -18,7 +18,7 @@ class BaseController extends Controller
         return response()->json($response, $status);
     }
 
-    public function sendError($error, $errorMessages, $status = 401)
+    public function sendError($error = "Unauthenticated!", $errorMessages = [], $status = 401)
     {
         $response = [
             'success' => false,
