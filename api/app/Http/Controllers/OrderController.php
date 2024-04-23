@@ -21,7 +21,7 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        if (!$user->hasPermission('View Order')) {
+        if (!$user->hasPermissionTo('View Order')) {
             return $this->sendError();
         }
 
@@ -49,7 +49,7 @@ class OrderController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermission('Insert Order')) {
+        if (!$user || !$user->hasPermissionTo('Insert Order')) {
             return $this->sendError();
         }
 
@@ -109,7 +109,7 @@ class OrderController extends BaseController
             return $this->sendError('Invalid Order Id!');
         }
 
-        if (!$user->hasPermission('View Order') || ($user->id != $order->user)) {
+        if (!$user->hasPermissionTo('View Order') || ($user->id != $order->user)) {
             return $this->sendError();
         }
 
@@ -172,7 +172,7 @@ class OrderController extends BaseController
 
     public function orderStatus($id)
     {
-        if (!auth()->user()->hasPermission('Update Order Status')) {
+        if (!auth()->user()->hasPermissionTo('Update Order Status')) {
             return $this->sendError();
         }
 
@@ -192,7 +192,7 @@ class OrderController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermission('Delete Order')) {
+        if (!$user || $user->hasPermissionTo('Delete Order')) {
             return $this->sendError();
         }
 
