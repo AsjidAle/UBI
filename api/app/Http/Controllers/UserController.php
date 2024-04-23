@@ -32,8 +32,9 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
-        $me = User::with(['roles'])->find($user->id);
+        $me = User::with(['roles.permissions'])->find($user->id);
         $me['role'] = $me->roles[0]->name;
+        $me['permissions'] = $me->roles[0]->permissions;
         unset($me->roles);
         return $this->sendResponse($me);
     }
@@ -80,6 +81,8 @@ class UserController extends BaseController
         }
 
         $targetUser = User::with(['roles'])->find($id);
+        $targetUser['role'] = $targetUser->roles[0]->name;
+        unset($targetUser->roles);
 
         if (!$targetUser) {
             return $this->sendError("User not found!");
