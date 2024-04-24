@@ -10,7 +10,7 @@ class Offer extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillables = [
+    protected $fillable = [
         'name',
         'discount',
         'valid_till',

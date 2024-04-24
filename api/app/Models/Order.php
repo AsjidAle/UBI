@@ -10,7 +10,7 @@ class Order extends Model
 {
     use HasFactory, softDeletes;
 
-    protected $fillables = [
+    protected $fillable = [
         'product', 'user', 'fulfiled', 'amount', 'price',
     ];
 
