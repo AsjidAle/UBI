@@ -19,7 +19,7 @@ class UserController extends BaseController
         if (!$user || !$user->hasPermissionTo('View User')) {
             return $this->sendError();
         }
-        $users = User::withTrashed()->with('roles')->paginate(100);
+        $users = User::withTrashed()->with('roles')->get();
 
         return $this->sendResponse($users);
     }
@@ -46,17 +46,18 @@ class UserController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermissionTo('Insert User')) {
+        if (!$user || !$user->hasPermissionTo('Create User')) {
             return $this->sendError();
         }
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string',
-            'username' => 'required|string|unique',
+            'username' => 'string|unique:users,username,',
             'avtar' => 'string',
             'bio' => 'string|nullable',
-            'role' => 'required|exists:roles,id',
+            'role' => 'required|exists:roles,name',
+            'password' => 'required|string|min:8',
         ]);
 
         if ($validator->fails()) {
@@ -65,7 +66,7 @@ class UserController extends BaseController
 
         $validated = $validator->validated();
         $user = User::create($validated);
-        $user->assignRole($validated->role);
+        $user->assignRole($request->role);
         return $this->sendResponse('User Successfully Created!');
     }
 
@@ -80,7 +81,11 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
-        $targetUser = User::with(['roles'])->find($id);
+        $targetUser = User::withTrashed()->with(['roles'])->find($id);
+
+        if (!$targetUser) {
+            return $this->sendErro('Invalid User Id', 'error', 422);
+        }
         $targetUser['role'] = $targetUser->roles[0]->name;
         unset($targetUser->roles);
 
@@ -102,13 +107,19 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
+        $targetUser = User::withTrashed()->with('roles')->find($id);
+
+        if (!$targetUser) {
+            return $this->sendError('Invalid User ID', 'Invalid', 422);
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'string',
             'email' => 'string',
-            'username' => 'string|unique',
+            'username' => 'string|unique:users,username,' . $targetUser->id,
             'avtar' => 'string',
             'bio' => 'string|nullable',
-            'role' => 'required|exists:roles,id',
+            'role' => 'required|exists:roles,name',
         ]);
 
         if ($validator->fails()) {
@@ -117,10 +128,12 @@ class UserController extends BaseController
 
         $validated = $validator->validated();
 
-        $user->rermoveRole($user->role->name);
+        if ($user->id != $targetUser->id) {
+            $targetUser->removeRole($targetUser->roles[0]->name);
+            $targetUser->assignRole($request->role);
+        }
+        $targetUser->update($validated);
 
-        $user->update($validated);
-        $user->assignRole($validated->role);
         return $this->sendResponse('Successfuly Updated!');
     }
 
@@ -135,18 +148,23 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
-        $user = User::find($id);
+        $targetUser = User::withTrashed()->find($id);
 
-        if (!$user) {
+        if (!$targetUser) {
             return $this->sendError('Invalid User ID');
         }
 
-        if ($user->id == $id) {
+        if ($targetUser->id == $user->id) {
             return $this->sendError("You can't deactivate own account!", 404);
         }
-        $user->delete();
 
-        return $this->sendResponse('Account deactivated Successfully!');
+        if ($targetUser->deleted_at) {
+            $targetUser->restore();
+        } else {
+            $targetUser->delete();
+        }
+
+        return $this->sendResponse('Operation Successfull!');
 
         $user = $id ? User::find($id) : auth()->user();
     }

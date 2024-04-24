@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('myOrders', [OrderController::class, 'myOrders']);
     Route::get('total', [ProductController::class, 'total']);
     Route::get('user/me', [UserController::class, 'me']);
+    Route::delete('user/activate/{id}', [UserController::class, 'destroy']);
     Route::get('roles', [RoleController::class, 'index']);
 
     Route::any('logout', [AuthController::class, 'logout']);
