@@ -22,10 +22,10 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('View Product')) {
+        if (!$user || $user->hasPermissionTo('View Products')) {
             return $this->sendError();
         }
-        
+
         $products = Product::all();
         return $this->sendResponse($products);
     }
@@ -34,7 +34,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('View Product')) {
+        if (!$user || $user->hasPermissionTo('View Products')) {
             return $this->sendError();
         }
 
@@ -49,7 +49,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermissionTo('Insert Product')) {
+        if (!$user || !$user->hasPermissionTo('Create Products')) {
             return $this->sendError();
         }
 
@@ -60,7 +60,7 @@ class ProductController extends BaseController
             'description' => 'required|string',
         ]);
 
-        if ($validator->dails()) {
+        if ($validator->fails()) {
             return $this->sendError("Validation Error", $validator->errors(), 422);
         }
 
@@ -90,7 +90,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('Update Product')) {
+        if (!$user || $user->hasPermissionTo('Update Products')) {
             return $this->sendError();
         }
 
@@ -124,7 +124,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('Delete Product')) {
+        if (!$user || $user->hasPermissionTo('Delete Products')) {
             return $this->sendError();
         }
 
