@@ -5,14 +5,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 // use App\Http\Controllers\OfferController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
 // use App\Http\Controllers\ProductOfferController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('auth/login', [AuthController::class, 'login']);
+Route::get('roles', [RoleController::class, 'index']);
+Route::post('register', [UserController::class, 'register']);
 
 Route::group(['middleware' => 'auth:api'], function () {
 
@@ -29,11 +33,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Route::get('alloffer', [OfferController::class, 'all']);
     Route::get('allprodut', [ProductController::class, 'all']);
     Route::get('allprodut', [ProductController::class, 'all']);
-    Route::get('myOrders', [OrderController::class, 'myOrders']);
+    Route::get('myorders', [OrderController::class, 'myOrders']);
+    Route::get('fulfil/{id}', [OrderController::class, 'fulfil']);
     Route::get('total', [ProductController::class, 'total']);
     Route::get('user/me', [UserController::class, 'me']);
     Route::delete('user/activate/{id}', [UserController::class, 'destroy']);
-    Route::get('roles', [RoleController::class, 'index']);
+    Route::get('permission', [PermissionController::class, 'index']);
+    Route::post('file', [FileController::class, 'upload']);
+    Route::post('permission/toggle', [PermissionController::class, 'update']);
+    Route::put('myUpdatePassword',[UserController::class,'myUpdatePassword']);
 
-    Route::any('logout', [AuthController::class, 'logout']);
+    Route::any('auth/logout', [AuthController::class, 'logout']);
 });
