@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -25,9 +26,31 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        $orders = Order::with(['user', 'product'])->paginate(100);
+        $orders = Order::with(['users', 'products'])->get();
 
         return $this->sendResponse($orders);
+    }
+
+    public function fulfil($id)
+    {
+        $user = auth()->user();
+
+        if (!$user || !$user->hasPermissionTo('Fulfil Order')) {
+            return $this->sendError();
+        }
+        $order = Order::find($id);
+
+        if (!$order) {
+            return $this->sendError('Invalid Order ID!');
+        }
+
+        if ($order->fulfil) {
+            return $this->sendError('Order is already fulfiled!');
+        }
+
+        $order->update(['fulfiled' => now()]);
+
+        return $this->sendResponse('Successfully Fulfilled!');
     }
 
     public function myOrders()
@@ -38,7 +61,7 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        $orders = Order::where('user', $user->id)->get();
+        $orders = Order::with('products')->where('user', $user->id)->get();
         return $this->sendResponse($orders);
     }
 
@@ -53,8 +76,9 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
+        \Illuminate\Support\Facades\Log::info($request->all());
         $validator = Validator::make($request->all(), [
-            'price' => 'required|integer|min:0.01',
+            'price' => 'required|integer|min:1',
             'amount' => 'required|integer|min:1',
             'offer' => 'exists:offers,id',
             'product' => 'required|exists:products,id',
@@ -67,8 +91,8 @@ class OrderController extends BaseController
         $validatedData = $validator->validated();
         $validatedData['user'] = $user->id;
 
-        if ($validatedData->offer) {
-            $offer = Offer::find($validatedData->offer);
+        if ($request->offer) {
+            $offer = Offer::find($request->offer);
             $productoffers = ProductOffer::where('offer', $offer->id)->get();
 
             $status = false;
@@ -88,8 +112,16 @@ class OrderController extends BaseController
             }
         }
 
+        $product = Product::find($request->product);
+
+        if ($product->stock < $request['amount']) {
+            return $this->sendError('Not Enough Stock');
+        }
+
+        $product->stock = $product->stock - $request['amount'];
+
         $order = Order::create($validatedData);
-        return $this->sendResponse("Order {$order->id} Successfully placed!");
+        return $this->sendResponse("Order with id #{$order->id} Successfully placed!");
     }
 
     /**
@@ -134,7 +166,7 @@ class OrderController extends BaseController
         }
 
         $validator = Validator::make($request->all(), [
-            'price' => 'integer|min:0.01',
+            // 'price' => 'integer|min:0.01',
             'amount' => 'integer|min:1',
             'product' => 'exists:products,id',
         ]);
