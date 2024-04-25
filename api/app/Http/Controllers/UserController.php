@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends BaseController
 {
@@ -22,6 +23,28 @@ class UserController extends BaseController
         $users = User::withTrashed()->with('roles')->get();
 
         return $this->sendResponse($users);
+    }
+
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users,email',
+            'username' => 'string|unique:users,username',
+            'bio' => 'string|nullable',
+            'role' => ['required', 'exists:roles,name', 'not_in:Executive'], // Adding the 'not_in' rule
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error', $validator->errors(), 422);
+        }
+
+        $validated = $validator->validated();
+        $user = User::create($validated);
+        $role = Role::where('name', $request->role)->first();
+        $user->assignRole($role);
+        return $this->sendResponse('User Successfully Created!');
     }
 
     public function me()
@@ -68,6 +91,34 @@ class UserController extends BaseController
         $user = User::create($validated);
         $user->assignRole($request->role);
         return $this->sendResponse('User Successfully Created!');
+    }
+
+    public function myUpdatePassword(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return $this->sendError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string|min:8',
+            'new_password' => 'required|min:8|different:current_password',
+            'new_password_confirmation' => 'required|same:new_password',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation error', $validator->errors(), 422);
+        }
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return $this->sendError('Current password is incorrect', [], 422);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+// Return success response
+        return $this->sendResponse('Password updated successfully');
     }
 
     /**
