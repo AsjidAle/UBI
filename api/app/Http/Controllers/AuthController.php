@@ -28,18 +28,9 @@ class AuthController extends BaseController
     {
         $user = Auth::user();
         if ($user) {
-            $user->currentAccessToken()->delete();
+            $user->tokens()->delete();
         }
         return $this->sendResponse('Successfully Logged out!');
     }
 
-    public function facebookLogin()
-    {
-        //
-    }
-
-    public function googleLogin()
-    {
-        //
-    }
 }
