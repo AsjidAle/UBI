@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class AnnouncementController extends BaseController
 {
@@ -32,7 +34,7 @@ class AnnouncementController extends BaseController
             return $this->sendError();
         }
 
-        $announcements = Announcement::where('valid_till', '>', now())->all();
+        $announcements = Announcement::where('valid_till', '>', now())->get();
 
         return $this->sendResponse($announcements);
     }
@@ -63,6 +65,8 @@ class AnnouncementController extends BaseController
         }
 
         $validated = $validator->validated();
+
+        $validated['valid_till'] = Carbon::createFromFormat('m/d/Y', $validated['valid_till'])->format('Y-m-d'); 
         Announcement::create($validated);
         return $this->sendResponse('Announcement Saved!');
     }
@@ -111,6 +115,7 @@ class AnnouncementController extends BaseController
             return $this->sendError('Validation Error', $validator->errors(), 422);
         }
 
+        $validated['valid_till'] = Carbon::createFromFormat('m/d/Y', $validated['valid_till'])->format('Y-m-d'); 
         $validated = $validator->validated();
         $announcement->update($validated);
         return $this->sendResponse('Announcement Updated Successfully!');
