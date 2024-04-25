@@ -9,7 +9,7 @@ class RoleController extends BaseController
 {
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get();
         return $this->sendResponse($roles);
     }
 }
