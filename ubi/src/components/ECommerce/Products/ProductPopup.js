@@ -4,7 +4,6 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import Utils from "../../../utils/Utils";
 import ProductServices from './../../../services/ProductServices';
-import UsersServices from "../../../services/UsersServices";
 import FileUploadPopup from "../../Custom/FileUploadPopup";
 import { CustomDatePicker as DatePicker } from "../../../components/Custom/CustomDatepicker";
 
@@ -124,7 +123,7 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
                             <div className="form-group">
                                 <p className="mg-b-10">Price</p>
                                 <Form.Group className=" has-success mg-b-0">
-                                    <Form.Control placeholder="Enter the Price" required type="number" name="price" defaultValue={product.price} />
+                                    <Form.Control placeholder="Enter the Price" required type="number" name="price" defaultValue={product.price} min={1} />
                                 </Form.Group>
                             </div>
                             <hr />
@@ -139,7 +138,7 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
                                     className="text-center">
                                     Choose File
                                 </Button>
-                                <Form.Control type="hidden" name="signature" defaultValue={signature ? signature : product.signature} />
+                                <Form.Control type="hidden" name="image" defaultValue={signature ? signature : product.image} />
                                 <FileUploadPopup
                                     showFileModal={showSignatureModal}
                                     setShowFileModal={setShowSignatureModal}
@@ -149,8 +148,9 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
                                     accept={"image/*"} />
                                 <br />
                                 {(signature || product.signature) &&
-                                    <img className="wd-50 ht-35" src={process.env.REACT_APP_UPLOADS_PUBLIC_URL + 'users/' + (signature ? signature : product.signature)} alt="" />
+                                    <img className="wd-50 ht-35" src={process.env.REACT_APP_UPLOADS_PUBLIC_URL + '/products/' + (signature ? signature : signature)} alt="" />
                                 }
+                                {process.env.REACT_APP_UPLOADS_PUBLIC_URL + 'products/' + signature}
                             </div>
 
                         </form>
