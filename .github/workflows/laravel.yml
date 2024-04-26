@@ -20,6 +20,8 @@ jobs:
       run: cd api
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Navigate to Laravel directory
+      run: cd api
     - name: List directory contents
       run: ls -la
     - name: Clear Composer Cache
