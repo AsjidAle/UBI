@@ -24,8 +24,6 @@ jobs:
       run: cd api
     - name: List directory contents
       run: ls -la
-    - name: Clear Composer Cache
-      run: composer clear-cache
     - name: Install Dependencies
       run: composer install
       # run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
