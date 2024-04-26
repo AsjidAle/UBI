@@ -15,16 +15,15 @@ jobs:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.2'
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Navigate to Laravel directory
       run: cd api
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    
     - name: List directory contents
       run: ls -la
     - name: Navigate to Laravel directory
-      run: cd api
+      run: cd UBI/api
     - name: List directory contents
       run: ls -la
     - name: Install Dependencies
