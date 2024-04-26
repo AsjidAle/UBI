@@ -25,9 +25,6 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
-
-
-    - name: Create Database
       run: |
         mysql -h localhost -u root --password=root -e "CREATE DATABASE laravel_test;"
         php artisan migrate --seed --env=testing
