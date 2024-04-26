@@ -96,6 +96,15 @@ export const MENUITEMS = [
 				permission: Utils.can('View Order'),
 			},
 			{
+				icon: 'ti-briefcase',
+				path: `${process.env.PUBLIC_URL}/pages/faq`,
+				type: 'link',
+				active: false,
+				selected: false,
+				title: 'Faqs',
+				permission: true,
+			},
+			{
 				path: `${process.env.PUBLIC_URL}/notificationlist`,
 				type: 'link',
 				active: false,
@@ -163,22 +172,13 @@ export const MENUITEMS = [
 		permission: false,
 		Items: [
 			{
-				icon: 'ti-briefcase',
-				path: `${process.env.PUBLIC_URL}/pages/faq`,
-				type: 'link',
-				active: false,
-				selected: false,
-				title: 'Faqs',
-				permission: true,
-			},
-			{
 				title: 'Pages',
 				icon: 'ti-palette',
 				type: 'sub',
 				menutitle: '',
 				active: false,
 				selected: false,
-				permission: true,
+				permission: false,
 				children: [
 					{
 						path: `${process.env.PUBLIC_URL}/pages/messagesuccess`,
@@ -186,7 +186,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Success Message',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/pages/messagedanger`,
@@ -194,7 +194,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Danger Message',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/pages/messagewarning`,
@@ -202,7 +202,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Warning Message',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/pages/emptypage`,
@@ -210,7 +210,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Empty Page',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/pages/switcherpages`,
@@ -218,7 +218,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Switcher Page',
-						permission: true,
+						permission: false,
 					}
 				]
 			},
@@ -226,7 +226,7 @@ export const MENUITEMS = [
 				title: 'Authentication',
 				icon: 'ti-lock',
 				type: 'sub',
-				permission: true,
+				permission: false,
 				children: [
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/signin`,
@@ -234,7 +234,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Sign In',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/signup`,
@@ -242,7 +242,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Sign Up',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/forgotpassword`,
@@ -250,7 +250,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Forgot Password',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/resetpassword`,
@@ -258,7 +258,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Reset Password',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/underConstruction`,
@@ -266,7 +266,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' UnderConstruction',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/lockscreen`,
@@ -274,7 +274,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: 'Lockscreen',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/error404`,
@@ -282,7 +282,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Error404',
-						permission: true,
+						permission: false,
 					},
 					{
 						path: `${process.env.PUBLIC_URL}/custompages/error505`,
@@ -290,7 +290,7 @@ export const MENUITEMS = [
 						active: false,
 						selected: false,
 						title: ' Error505',
-						permission: true,
+						permission: false,
 					}
 				]
 			}
