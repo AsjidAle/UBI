@@ -16,6 +16,8 @@ jobs:
       with:
         php-version: '8.2'
     - uses: actions/checkout@v4
+    - name: List directory contents
+      run: ls -la
     - name: Navigate to Laravel directory
       run: cd UBI/api
     - name: Copy .env
