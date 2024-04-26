@@ -16,12 +16,12 @@ jobs:
       with:
         php-version: '8.2'
     - uses: actions/checkout@v2
-    - name: List directory contents
-      run: ls -la
     - name: Navigate to Laravel directory
       run: cd api
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: List directory contents
+      run: ls -la
     - name: Clear Composer Cache
       run: composer clear-cache
     - name: Install Dependencies
