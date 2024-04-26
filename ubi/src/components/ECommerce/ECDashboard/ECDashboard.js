@@ -181,7 +181,7 @@ function ECDashboard() {
                     options={edashboard.radialbarchart.options}
                     series={[
                       (data && data.totalOrders !== undefined && data.totalOrders !== 0) // Check if data and totalOrders exist and not zero
-                        ? [(data.totalFulfiledOrders / data.totalOrders) * 100] // Calculate percentage if totalOrders is not zero
+                        ? [((data.totalFulfiledOrders / data.totalOrders) * 100).toFixed(2)] // Calculate percentage if totalOrders is not zero and round off to two decimal places
                         : [0] // If totalOrders is zero or undefined, set the series to zero
                     ]}
                     type="radialBar"
