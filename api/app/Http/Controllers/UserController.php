@@ -55,7 +55,7 @@ class UserController extends BaseController
             return $this->sendError();
         }
 
-        $me = User::with(['roles.permissions'])->find($user->id);
+        $me = $user->load('roles.permissions');
         $me['role'] = $me->roles[0]->name;
         $me['permissions'] = $me->roles[0]->permissions;
         unset($me->roles);
