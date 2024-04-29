@@ -60,10 +60,10 @@ const SideBar = () => {
             items.active = false;
             items.selected = false;
             if (
-              location.pathname === "/ubi/" ||
-              location.pathname === "/ubi"
+              location.pathname === "/" ||
+              location.pathname === ""
             ) {
-              location.pathname = "/ubi/dashboard/";
+              location.pathname = "/dashboard/";
             }
             if (location.pathname === items.path + "/") {
               items.active = true;

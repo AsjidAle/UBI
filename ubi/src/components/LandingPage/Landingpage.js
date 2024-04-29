@@ -201,10 +201,10 @@ const Landingpage = () => {
                             d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
                         </svg></div>
                         <div className="header-nav-right d-none d-lg-block">
-                          <Button onClick={() => window.location.href = "/ubi/dashboard"} className="btn ripple btn-min w-sm bg-secondary me-2"
+                          <Button onClick={() => window.location.href = "/dashboard"} className="btn ripple btn-min w-sm bg-secondary me-2"
                           >New User
                           </Button>
-                          <Button onClick={() => window.location.href = "/ubi/dashboard"} className="btn ripple btn-min w-sm bg-info me-2"
+                          <Button onClick={() => window.location.href = "/dashboard"} className="btn ripple btn-min w-sm bg-info me-2"
                           >Login
                           </Button>
 
@@ -229,7 +229,7 @@ const Landingpage = () => {
                         connection at a time.
                       </h6>
 
-                      <Link to="/ubi/products" className="btn ripple btn-min w-lg mb-3 me-2 btn-light"><i
+                      <Link to="/products" className="btn ripple btn-min w-lg mb-3 me-2 btn-light"><i
                         className="fe fe-play me-2"></i>
                         {/* Get Started */}
                         Visit to Our Store
@@ -3196,7 +3196,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                             <ul className="mb-5 mb-lg-0 ps-0">
                               <li><Link to="#">Our Team</Link></li>
                               <li><Link to="#">Contact US</Link></li>
-                              <li><Link to="/ubi/aboutus/">About</Link></li>
+                              <li><Link to="/aboutus/">About</Link></li>
                               <li><Link to="#">Services</Link></li>
                               <li><Link to="#">Blog</Link></li>
                               <li><Link to="#">Terms and Services</Link></li>

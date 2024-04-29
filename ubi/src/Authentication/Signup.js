@@ -41,7 +41,7 @@ const SignUp = () => {
     e.preventDefault();
     const response = await UsersServices.register(data);
     Utils.Toast('success', 'Account Successfully Created!');
-    navigate("/ubi");
+    navigate("/");
   };
 
   const navigate = useNavigate();
