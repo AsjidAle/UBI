@@ -118,6 +118,9 @@ export function UsersDatatable({ users, setUsers, fetchUsers }) {
               setUsers(users);
               setForceUpdate(!forceUpdate);
               Utils.Toast('success', 'Record Successfully Deactivated!');
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
             }
           }
           catch (error) {
@@ -142,13 +145,16 @@ export function UsersDatatable({ users, setUsers, fetchUsers }) {
     setUsers(users);
     setForceUpdate(!forceUpdate);
     Utils.Toast('success', 'Record Successfully Activated!');
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   const tableData = {
     columns,
     data,
   };
-  
+
   return (
     <>
       <div className="table">
