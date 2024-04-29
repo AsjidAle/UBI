@@ -61,7 +61,7 @@ export function UsersDatatable({ users, setUsers, fetchUsers }) {
               <i className="fe fe-edit"></i> Edit
             </Button>
           }
-          {!row.deleted &&
+          {(!row.deleted_at) &&
             <>
               {Utils.can('Activate User') &&
                 <Button variant="danger" size="sm" onClick={() => openDelete(row)}>
@@ -70,7 +70,7 @@ export function UsersDatatable({ users, setUsers, fetchUsers }) {
               }
             </>
           }
-          {row.deleted &&
+          {(row.deleted_at) &&
             <>
               {Utils.can('Deactivate User') &&
                 <Button variant="success" size="sm" onClick={() => doActivate(row)}>
