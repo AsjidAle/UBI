@@ -120,7 +120,7 @@ const ProductDetails = () => {
 
                     <h5 className="mb-2">
                       <span className="text-success">Price:</span>
-                      <b>₦ {product.price * quantity}</b>
+                      <b>₦ {isNaN(product.price * quantity) ? '' : (product.price * quantity)}</b>
                     </h5>
 
                     <h6 className="mt-4 fs-16">Description</h6>
