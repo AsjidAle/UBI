@@ -69,7 +69,7 @@ const Profile = () => {
 
     const result = await UsersServices.myUpdatePassword(jsonObject);
 
-    Utils.Toast('success', result.message);
+    Utils.Toast('success', result.data);
     e.target.reset();
   }
 
