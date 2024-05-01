@@ -20,7 +20,7 @@ const SignUp = () => {
     const fetchRoles = async () => {
       try {
         const _roles = [];
-        const response = await RolesServices.gt();
+        const response = await RolesServices.get();
         if (Array.isArray(response.data)) {
           response.data.map((role, index) => index != 0 && _roles.push({ label: role.name, value: role.name }));
           setRoles(_roles);

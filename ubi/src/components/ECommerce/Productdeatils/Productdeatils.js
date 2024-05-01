@@ -120,7 +120,7 @@ const ProductDetails = () => {
 
                     <h5 className="mb-2">
                       <span className="text-success">Price:</span>
-                      <b>₦ {product.price}</b>
+                      <b>₦ {product.price * quantity}</b>
                     </h5>
 
                     <h6 className="mt-4 fs-16">Description</h6>
@@ -138,7 +138,6 @@ const ProductDetails = () => {
                         value={quantity}
                         onChange={handleQuantityChange}
                         placeholder="Enter Quantity"
-                        max={10}
                         min={1}
                       />
                     </div>
