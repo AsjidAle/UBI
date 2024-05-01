@@ -411,6 +411,13 @@ function ECDashboard() {
           </Row >
         </>
       }
+
+      {!Utils.can("View Dashboard") &&
+        <>
+        <h1>Welcome to UBI</h1>
+        <h5>We Help and connect Farmers, Exporters, Importer, Seller, anyone related to the Farming Inudstry</h5>
+        </>
+      }
     </Fragment >
   );
 }
