@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import NotificationServices from '../../../services/NotificationServices';
 import Utils from './../../../utils/Utils';
 import NotificationPopup from './NotificationPopUp';
+import ReactHtmlParser from 'react-html-parser';
 
 const NotificationList = () => {
 
@@ -78,7 +79,8 @@ const NotificationList = () => {
                         </p>
                         <p className="mb-0 tx-13 text-muted">
                           {/* <p className="mb-0 tx-13 text-muted">{not.announcement.replace(/<[^>]+>/g, '')}</p> */}
-                          <p className="mb-0 tx-13 text-muted">{not.announcement}</p>
+                          {/* <p className="mb-0 tx-13 text-muted">{not.announcement}</p> */}
+                          <p>{ReactHtmlParser(not.announcement)}</p>
                         </p>
                       </div>
                       <div className="notify-time">
