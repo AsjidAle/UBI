@@ -20,7 +20,7 @@ const Permission = () => {
             if (!Utils.can("View Permissions") && !Utils.can("Update Permissions")) {
                 return;
             }
-            var _roles = await RoleServices.gt();
+            var _roles = await RoleServices.get();
             console.log(_roles.data);
             setRoles(_roles.data);
 
