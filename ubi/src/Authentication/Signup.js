@@ -21,10 +21,8 @@ const SignUp = () => {
       try {
         const _roles = [];
         const response = await RolesServices.get();
-        if (Array.isArray(response.data)) {
-          response.data.map((role, index) => index != 0 && _roles.push({ label: role.name, value: role.name }));
-          setRoles(_roles);
-        }
+        response.data.map((role, index) => index != 0 && _roles.push({ label: role.name, value: role.name }));
+        setRoles(_roles);
       } catch (error) {
         console.error("Error fetching roles:", error);
       }
