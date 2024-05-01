@@ -18,14 +18,14 @@ const SignUp = () => {
 
   useEffect(() => {
     const fetchRoles = async () => {
-      try {
-        const _roles = [];
-        const response = await RolesServices.get();
-        response.data.map((role, index) => index != 0 && _roles.push({ label: role.name, value: role.name }));
+
+      RolesServices.get().then(result => {
+        var _roles = [];
+        for (var i = 0; i < result.data.length; i++) {
+            (i != 0) && _roles.push({ value: result.data[i].name, label: result.data[i].name });
+        }
         setRoles(_roles);
-      } catch (error) {
-        console.error("Error fetching roles:", error);
-      }
+    });
     };
 
     fetchRoles();
