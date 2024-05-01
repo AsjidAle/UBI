@@ -250,8 +250,8 @@ const Landingpage = () => {
                       <h4 className="text-center fw-semibold landing-card-header">Features</h4>
                       <span className="landing-title"></span>
                       <h2 className="fw-semibold text-center">UBI Main Features</h2>
-                      <p className="text-default mb-5 text-center">The Spruha admin template comes with
-                        ready-to-use features that are completely easy-to-use for any user, even for
+                      <p className="text-default mb-5 text-center">The UBI comes with
+                        ready-to-use features and facilitates that are completely easy-to-use for any user, even for
                         a beginner.</p>
                       <Row className="mt-7">
                         <Col lg={3} md={12}>
