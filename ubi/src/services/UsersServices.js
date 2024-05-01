@@ -1,6 +1,9 @@
 import requests from './httpService';
 
 const UsersServices = {
+  gt() {
+    return requests.get(`/users`);
+  },
   get(id, params) {
     id = id ? id : '';
     return requests.get(`/users/${id}`, { params });

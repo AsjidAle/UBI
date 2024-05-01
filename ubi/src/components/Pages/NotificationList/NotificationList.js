@@ -13,7 +13,7 @@ const NotificationList = () => {
   useEffect(() => {
     const fetch = async () => {
       if (Utils.can('View Announcement')) {
-        var notifications = await NotificationServices.get();
+        var notifications = await NotificationServices.gt();
         setData(notifications.data);
         console.log(notifications.data);
       }
@@ -77,7 +77,8 @@ const NotificationList = () => {
                           {not.title}
                         </p>
                         <p className="mb-0 tx-13 text-muted">
-                          <p className="mb-0 tx-13 text-muted">{not.announcement.replace(/<[^>]+>/g, '')}</p>
+                          {/* <p className="mb-0 tx-13 text-muted">{not.announcement.replace(/<[^>]+>/g, '')}</p> */}
+                          <p className="mb-0 tx-13 text-muted">{not.announcement}</p>
                         </p>
                       </div>
                       <div className="notify-time">

@@ -5,6 +5,9 @@ const OrderServices = {
         id = id ? id : '';
         return requests.get(`/order/${id}`, { params });
     },
+    gt() {
+        return requests.get(`/order`);
+    },
     insert(body) {
         return requests.post(`/order`, body);
     },

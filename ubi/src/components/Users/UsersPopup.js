@@ -48,7 +48,7 @@ const UsersPopup = ({ showModal, setShowModal, fetchUsers, id }) => {
 
 
     const fetchAllRoles = (selected) => {
-        RolesServices.get().then(result => {
+        RolesServices.gt().then(result => {
             var _roles = [];
             for (var i = 0; i < result.data.length; i++) {
                 _roles.push({ value: result.data[i].name, label: result.data[i].name });

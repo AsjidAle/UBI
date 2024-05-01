@@ -8,7 +8,7 @@ function Orders() {
 
   useEffect(() => {
     const fetch = async () => {
-      var _orders = await OrderServices.get();
+      var _orders = await OrderServices.gt();
       setOrders(_orders.data);
     }
 

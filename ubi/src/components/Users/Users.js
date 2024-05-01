@@ -19,7 +19,7 @@ const Users = () => {
 		// Assuming you have an asynchronous operation that returns a promise
 		var scroll = window.scrollY;
 		setLoading(true);
-		UsersServices.get().then(result => {
+		UsersServices.gt().then(result => {
 			setUsers(result.data);
 			setLoading(false);
 			Utils.scrollTo(scroll);

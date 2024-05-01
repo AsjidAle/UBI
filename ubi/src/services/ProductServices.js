@@ -5,6 +5,9 @@ const ProductServices = {
         id = id ? id : '';
         return requests.get(`/product/${id}`, { params });
     },
+    gt() {
+        return requests.get(`/product`);
+    },
     insert(body) {
         return requests.post(`/product`, body);
     },

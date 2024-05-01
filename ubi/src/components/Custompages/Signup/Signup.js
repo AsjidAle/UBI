@@ -21,7 +21,7 @@ const Signup = () => {
   useEffect(() => {
     const fetch = async () => {
       var _roles = [];
-      var response = await RolesServices.get();
+      var response = await RolesServices.gt();
       response.data.map((role, index) => { index != 0 && _roles.push({ label: role.name, value: role.name }) });
       setRoles(_roles);
       console.log(_roles);

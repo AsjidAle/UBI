@@ -5,6 +5,9 @@ const NotificationServices = {
         id = id ? id : '';
         return requests.get(`/announcement/${id}`, { params });
     },
+    gt() {
+        return requests.get(`/announcement`);
+    },
     insert(body) {
         return requests.post(`/announcement`, body);
     },

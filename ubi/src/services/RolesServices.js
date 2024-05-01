@@ -5,6 +5,9 @@ const RolesServices = {
     id = id ? id : '';
     return requests.get(`/roles/${id}`);
   },
+  gt() {
+    return requests.get(`/roles`);
+  },
 };
 
 export default RolesServices;
