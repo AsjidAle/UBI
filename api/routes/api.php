@@ -14,7 +14,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::any('auth/login', [AuthController::class, 'login']);
+Route::post('auth/login', [AuthController::class, 'login']);
 Route::get('roles', [RoleController::class, 'index']);
 Route::post('register', [UserController::class, 'register']);
 
