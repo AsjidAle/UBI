@@ -30,10 +30,11 @@ const Aboutus = () => (
           </div>
         </Col>
       </Row>
-      <Row className="row-sm">
-        <Col xl={12}>
+      <Row className="row-sm justify-content-center">
+        <Col xl={11}>
           <Card className="custom-card">
             <img
+              style={{ height: '70%' }}
               src={require("../../../assets/img/media/team.jpg")}
               alt="img"
               className="rounded-5"
@@ -88,9 +89,7 @@ const Aboutus = () => (
           <div className="pt-5 pb-4">
             <h3>The Values We Live By...</h3>
             <p className="tx-14 mb-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Quibusdam similique provident Lorem ipsum dolor sit amet
-              consectetur !
+              We put the values in the businessses, farming styles and optimization!
             </p>
             <div>
               <div className="d-flex mb-4">
@@ -398,7 +397,7 @@ const Aboutus = () => (
                 </Link>
                 <p className="pro-user-desc text-muted mb-1">Manager</p>
                 <div className="text-center tx-14 mb-3">
-                  Skilled manager driving strategic initiatives for enhanced efficiency and success in agriculture.
+                  Skilled manager driving initiatives for enhanced efficiency in agriculture.
                 </div>
               </div>
               <div className="text-center mt-3">
