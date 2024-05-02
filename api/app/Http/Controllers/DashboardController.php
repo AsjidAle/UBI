@@ -13,26 +13,27 @@ class DashboardController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermissionTo('View Dashboard')) {
+        if (!$user) {
             return $this->sendError();
         }
 
         $data = null;
+        if ($user->hasPermissionTo('View Dashboard')) {
 
-        $data['totalProducts'] = Product::count();
-        $data['totalOrders'] = Order::count();
-        $data['unfulfiledOrders'] = Order::where('fulfiled')->count();
-        $data['totalFulfiledOrders'] = Order::whereNotNull('fulfiled')->count();
-        $data['pendingOrders'] = Order::where('created_at', '<', now()->subDays(30))->whereNull('fulfiled')->count();
-        $data['pendingOrders6mth'] = Order::where('created_at', '<', now()->subDays(180))->whereNull('fulfiled')->count();
-        $data['fulfiledOrders'] = Order::where('created_at', '<', now()->subDays(30))->whereNotNull('fulfiled')->count();
-        $data['fulfiledOrders6mth'] = Order::where('created_at', '<', now()->subDays(180))->whereNotNull('fulfiled')->count();
-        $data['totalUsers'] = User::count();
-        $data['user6mth'] = User::where('created_at', '<', now()->subDays(180))->count();
+            $data['totalProducts'] = Product::count();
+            $data['totalOrders'] = Order::count();
+            $data['unfulfiledOrders'] = Order::where('fulfiled')->count();
+            $data['totalFulfiledOrders'] = Order::whereNotNull('fulfiled')->count();
+            $data['pendingOrders'] = Order::where('created_at', '<', now()->subDays(30))->whereNull('fulfiled')->count();
+            $data['pendingOrders6mth'] = Order::where('created_at', '<', now()->subDays(180))->whereNull('fulfiled')->count();
+            $data['fulfiledOrders'] = Order::where('created_at', '<', now()->subDays(30))->whereNotNull('fulfiled')->count();
+            $data['fulfiledOrders6mth'] = Order::where('created_at', '<', now()->subDays(180))->whereNotNull('fulfiled')->count();
+            $data['totalUsers'] = User::count();
+            $data['user6mth'] = User::where('created_at', '>', now()->subDays(180))->count();
 
-        $data['products'] = Product::orderBy('id', 'desc')->take(5)->get();
-        $data['orders'] = Order::orderBy('id', 'desc')->take(5)->get();
-
+            $data['products'] = Product::orderBy('id', 'desc')->take(5)->get();
+            $data['orders'] = Order::orderBy('id', 'desc')->take(5)->get();
+        }
         return $this->sendResponse($data);
     }
 }
