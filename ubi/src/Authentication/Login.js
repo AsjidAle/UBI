@@ -91,10 +91,10 @@ const SignIn = () => {
                               community
                             </p> */}
                             <Form.Group className="text-start form-group" controlId="formUsername">
-                              <Form.Label>Username</Form.Label>
+                              <Form.Label>Email</Form.Label>
                               <Form.Control
                                 className="form-control"
-                                placeholder="Enter your Username"
+                                placeholder="Enter your Email"
                                 name="username"
                                 type='text'
                                 value={data.username}

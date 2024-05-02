@@ -24,7 +24,7 @@ export function UsersDatatable({ users, setUsers, fetchUsers }) {
       sortable: true
     },
     {
-      name: "USERNAME",
+      name: "Company",
       selector: row => [row.username],
       width: '175px',
       sortable: true

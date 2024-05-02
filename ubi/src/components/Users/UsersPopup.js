@@ -125,9 +125,9 @@ const UsersPopup = ({ showModal, setShowModal, fetchUsers, id }) => {
                             </div>
 
                             <div className="form-group">
-                                <p className="mg-b-10">Username</p>
+                                <p className="mg-b-10">Company <small>(Optional)</small></p>
                                 <Form.Group className=" has-success mg-b-0">
-                                    <Form.Control placeholder="Enter the Username" required type="text" name="username" defaultValue={user.username} />
+                                    <Form.Control placeholder="Enter the Email" required type="text" name="username" defaultValue={user.username} />
                                 </Form.Group>
                             </div>
                             <div className="form-group">

@@ -113,10 +113,10 @@ const SignUp = () => {
                           className="text-start form-group"
                           controlId="fromUsername"
                         >
-                          <Form.Label>Username</Form.Label>
+                          <Form.Label>Company Name <small>(Optional)</small></Form.Label>
                           <Form.Control
                             className="form-control"
-                            placeholder="Select unique username"
+                            placeholder="Enter Company Name"
                             type="text"
                             name="username"
                             value={data.username}

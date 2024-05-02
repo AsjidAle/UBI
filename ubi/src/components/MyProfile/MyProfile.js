@@ -179,12 +179,12 @@ const Profile = () => {
                         <FormGroup className="form-group">
                           <Row className=" row-sm">
                             <Col md={3}>
-                              <Form.Label >Username</Form.Label>
+                              <Form.Label >Company</Form.Label>
                             </Col>
                             <Col md={9}>
                               <Form.Control
                                 type="text"
-                                placeholder="Username"
+                                placeholder="Company"
                                 required={true}
                                 defaultValue={me.username}
                                 name="username"

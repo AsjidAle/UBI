@@ -31,7 +31,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'username' => 'string',
+            'username' => 'string|nullable',
             'bio' => 'string|nullable',
             'role' => ['required', 'exists:roles,name', 'not_in:Executive'], // Adding the 'not_in' rule
             'password' => 'required|string|min:8',
@@ -77,7 +77,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string',
-            'username' => 'string,',
+            'username' => 'string|nullable',
             'avtar' => 'string',
             'bio' => 'string|nullable',
             'role' => 'required|exists:roles,name',
@@ -168,7 +168,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'string',
             'email' => 'string',
-            'username' => 'string',
+            'username' => 'string|nullable',
             'avtar' => 'string',
             'bio' => 'string|nullable',
             'role' => 'required|exists:roles,name',
