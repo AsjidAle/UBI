@@ -57,7 +57,7 @@ const SignUp = () => {
               >
                 <div className="mt-5 pt-5 p-2 pos-absolute">
                   <img
-                    src={require("../assets/img/brand/logo-light.jpg")}
+                    src={require("../assets/img/brand/logo-lights.jpg")}
                     className="header-brand-img mb-4"
                     alt="logo"
                   />
