@@ -53,7 +53,7 @@ const SignUp = () => {
               <Col
                 lg={6}
                 xl={5}
-                className="d-none d-lg-block text-center bg-primary details"
+                className="d-none d-lg-block text-center bg-success "
               >
                 <div className="mt-5 pt-5 p-2 pos-absolute">
                   <img
@@ -165,7 +165,7 @@ const SignUp = () => {
 
                         <Button
                           onClick={signup}
-                          className="btn ripple btn-main-primary btn-block mt-1"
+                          className="bg bg-success btn-block mt-1"
                         >
                           Create Account
                         </Button>
@@ -173,7 +173,7 @@ const SignUp = () => {
                       <div className="text-start mt-3 ms-0">
                         <p className="mb-0">
                           Already have an account?
-                          <Link to="/authentication/login"> SignIn</Link>
+                          <Link to="/authentication/login" className="text-success"> SignIn</Link>
                         </p>
                       </div>
                     </Card.Body>

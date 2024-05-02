@@ -53,7 +53,7 @@ const SignIn = () => {
                   <Col
                     lg={6}
                     xl={5}
-                    className="d-none d-lg-block text-center bg-primary details"
+                    className="d-none d-lg-block text-center bg-success"
                   >
                     <div className="mt-5 pt-4 p-2 pos-absolute w-100">
                       <div className="clearfix my-5"></div>
@@ -117,7 +117,7 @@ const SignIn = () => {
                                 required
                               />
                             </Form.Group>
-                            <Button onClick={Login} disabled={disabled} className="btn ripple btn-main-primary btn-block mt-2">
+                            <Button onClick={Login} disabled={disabled} className="btn bg bg-success btn-block mt-2">
                               Sign In
                             </Button>
                           </Form>
@@ -125,6 +125,7 @@ const SignIn = () => {
                             <div>
                               © All Rights Reserved. Simpliance
                               <Link
+                                className='text-success'
                                 to={`${process.env.PUBLIC_URL}/authentication/signup`}
                               > Register Here</Link>
                             </div>
