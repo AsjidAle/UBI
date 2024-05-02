@@ -226,7 +226,7 @@ function Header() {
                             alt="img" />
                         </span>
                         <div className="d-flex">
-                          <span className="mt-2">English</span>
+                          <span className="mt-2">Nigeria</span>
                         </div>
                       </Dropdown.Item>
                     </Dropdown.Menu>
