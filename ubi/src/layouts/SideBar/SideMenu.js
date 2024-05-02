@@ -96,15 +96,6 @@ export const MENUITEMS = [
 				permission: Utils.can('View Order'),
 			},
 			{
-				icon: 'ti-briefcase',
-				path: `${process.env.PUBLIC_URL}/pages/faq`,
-				type: 'link',
-				active: false,
-				selected: false,
-				title: 'Faqs',
-				permission: true,
-			},
-			{
 				path: `${process.env.PUBLIC_URL}/notificationlist`,
 				type: 'link',
 				active: false,
@@ -136,6 +127,21 @@ export const MENUITEMS = [
 				active: false,
 				selected: false,
 				title: 'My Profile',
+				permission: true,
+			},
+		]
+	},
+	{
+		menutitle: 'About',
+		permission: true,
+		Items: [
+			{
+				icon: 'ti-briefcase',
+				path: `${process.env.PUBLIC_URL}/pages/faq`,
+				type: 'link',
+				active: false,
+				selected: false,
+				title: 'Faqs',
 				permission: true,
 			},
 		]
