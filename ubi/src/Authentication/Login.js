@@ -96,7 +96,7 @@ const SignIn = () => {
                                 className="form-control"
                                 placeholder="Enter your Email"
                                 name="username"
-                                type='text'
+                                type='email'
                                 value={data.username}
                                 onChange={changeHandler}
                                 required
