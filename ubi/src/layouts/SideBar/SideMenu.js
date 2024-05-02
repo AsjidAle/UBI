@@ -33,15 +33,6 @@ export const MENUITEMS = [
 				permission: Utils.can('View User'),
 			},
 			{
-				path: `${process.env.PUBLIC_URL}/aboutus`,
-				icon: 'fa fa-list',
-				type: 'link',
-				active: false,
-				selected: false,
-				title: 'About Us',
-				permission: true,
-			},
-			{
 				icon: 'ti-shopping-cart-full',
 				path: `${process.env.PUBLIC_URL}/products`,
 				type: 'link',
@@ -96,6 +87,15 @@ export const MENUITEMS = [
 				permission: Utils.can('View Order'),
 			},
 			{
+				icon: 'ti-briefcase',
+				path: `${process.env.PUBLIC_URL}/pages/faq`,
+				type: 'link',
+				active: false,
+				selected: false,
+				title: 'Faqs',
+				permission: true,
+			},
+			{
 				path: `${process.env.PUBLIC_URL}/notificationlist`,
 				type: 'link',
 				active: false,
@@ -136,12 +136,12 @@ export const MENUITEMS = [
 		permission: true,
 		Items: [
 			{
-				icon: 'ti-briefcase',
-				path: `${process.env.PUBLIC_URL}/pages/faq`,
+				path: `${process.env.PUBLIC_URL}/aboutus`,
+				icon: 'fa fa-list',
 				type: 'link',
 				active: false,
 				selected: false,
-				title: 'Faqs',
+				title: 'About Us',
 				permission: true,
 			},
 		]
