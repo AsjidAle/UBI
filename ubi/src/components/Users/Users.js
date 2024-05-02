@@ -64,7 +64,7 @@ const Users = () => {
 							<div>
 								<h6 className="main-content-label mb-1">Manage Users</h6>
 								<p className="text-muted card-sub-title">
-									Manage users and add Signatures
+									Add or Edit Users
 								</p>
 							</div>
 							<div className="responsive">
