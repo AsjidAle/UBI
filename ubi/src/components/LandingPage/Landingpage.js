@@ -156,9 +156,6 @@ const Landingpage = () => {
                     <Navbar.Collapse className="collapse navbar-collapse" id="navbarSupportedContent-4">
                       <div className="d-flex order-lg-2 ms-auto">
                         <div className="header-nav-right p-3">
-                          <Link to="#" className="btn ripple btn-min w-sm btn-outline-primary me-2"
-                            target="_blank">New User
-                          </Link>
                           <Link to="#" className="btn ripple btn-min w-sm btn-primary me-2"
                             target="_blank">Login
                           </Link>
@@ -201,9 +198,6 @@ const Landingpage = () => {
                             d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
                         </svg></div>
                         <div className="header-nav-right d-none d-lg-block">
-                          <Button onClick={() => window.location.href = "/dashboard"} className="btn ripple btn-min w-sm bg-secondary me-2"
-                          >New User
-                          </Button>
                           <Button onClick={() => window.location.href = "/dashboard"} className="btn ripple btn-min w-sm bg-info me-2"
                           >Login
                           </Button>
@@ -3016,7 +3010,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                                                     Main Branch</h4>
                                                   <p className="title-desc mb-1">150 Burno
                                                     Street</p>
-                                                  <p>Naigeria, CA </p>
+                                                  <p>Nigeria</p>
                                                 </div>
                                               </Card.Body>
                                             </Card>
@@ -3174,10 +3168,10 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                         <Row>
                           <Col lg={4} sm={12} md={12} className="reveal revealleft">
                             <h6>About</h6>
-                            <p>Embark on a transformative journey with AgroNex, your ultimate ally
+                            <p>Embark on a transformative journey with UBI, your ultimate ally
                               in elevating Nigeria's agricultural export realm. At the heart of
-                              AgroNex lies our unwavering resolve to harness state-of-the-art
-                              technology to surmount the obstacles encountered by our farmers,
+                              UBI lies our unwavering resolve to harness state-of-the-art
+                              technology to surmount the obstacles encountered by farmers,
                               traders, and all members of the agricultural value chain.
                             </p>
                           </Col>
@@ -3206,8 +3200,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                             <div>
                               <Link to="#"><img loading="lazy" alt="" className="logo mb-3"
                                 src={require("../../assets/img/brand/logo-light.jpg")} /></Link>
-                              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur Excepteur sint occaecat.</p>
+                              <p>Submit your messages and queries at here. We love to here your questions and suggestions.</p>
                               <div className="form-group">
                                 <div className="input-group">
                                   <input type="text" className="form-control"
