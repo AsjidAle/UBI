@@ -8,15 +8,12 @@ const Aboutus = () => (
     <div className="page-header">
       <div>
         <h2 className="main-content-title tx-24 mg-b-5">About Us</h2>
-        <Breadcrumb>
-          <Breadcrumb.Item active>About</Breadcrumb.Item>
-        </Breadcrumb>
       </div>
     </div>
     <Container>
       <Row className="row-sm">
         <Col xl={12}>
-          <div className="text-center p-4">
+          <div className="text-center pb-4 px-4">
             <h2>We're a Community of Farmers and Innovators.</h2>
             <p className="px-sm-5">
               Embark on a transformative journey with UBI, your ultimate ally in elevating Nigeria's
