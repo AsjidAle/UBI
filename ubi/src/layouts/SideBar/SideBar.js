@@ -209,7 +209,7 @@ const SideBar = () => {
               className="hor-scroll"
               style={{ position: "absolute" }}
             >
-              <div className="sidemenu-logo">
+              <div className="sidemenu-logo bg-white border-right border-success">
                 <Link
                   className="main-logo"
                   to={`${process.env.PUBLIC_URL}/ `}
