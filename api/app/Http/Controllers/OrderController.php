@@ -224,7 +224,7 @@ class OrderController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('Delete Order')) {
+        if (!$user) {
             return $this->sendError();
         }
 
@@ -233,8 +233,12 @@ class OrderController extends BaseController
         if (!$order) {
             return $this->sendError('Invalid Order Id!');
         }
+        // if the user placed the order he can cancel or else if he have permission to cancel
+        if($order->user != $user->id || $user->hasPermissionTo('Delete Order')){
+            return $this->sendError();
+        }
         if ($order->fulfiled) {
-            return $this->sendError("Order fulfiled can't remove");
+            return $this->sendError("Order fulfiled can't cancel");
         }
 
         $order->delete();

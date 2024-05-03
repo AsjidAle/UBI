@@ -20,6 +20,9 @@ const OrderServices = {
     fulfil(id) {
         return requests.get(`fulfil/${id}`);
     },
+    cancel(id) {
+        return requests.delete(`cancel/${id}`);
+    },
     myOrders() {
         return requests.get('myorders');
     }
