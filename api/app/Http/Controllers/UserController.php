@@ -31,7 +31,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'username' => 'string|nullable',
+            'username' => 'string',
             'bio' => 'string|nullable',
             'role' => ['required', 'exists:roles,name', 'not_in:Executive'], // Adding the 'not_in' rule
             'password' => 'required|string|min:8',
@@ -77,7 +77,7 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string',
-            'username' => 'string|nullable',
+            'username' => 'string',
             'avtar' => 'string',
             'bio' => 'string|nullable',
             'role' => 'required|exists:roles,name',
@@ -168,10 +168,11 @@ class UserController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'string',
             'email' => 'string',
-            'username' => 'string|nullable',
+            'username' => 'string',
             'avtar' => 'string',
             'bio' => 'string|nullable',
             'role' => 'required|exists:roles,name',
+            'password'=>'',
         ]);
 
         if ($validator->fails()) {
@@ -184,7 +185,7 @@ class UserController extends BaseController
             $targetUser->removeRole($targetUser->roles[0]->name);
             $targetUser->assignRole($request->role);
         }
-        $targetUser->update($validated);
+        // $targetUser->update($validated);
 
         return $this->sendResponse('Successfuly Updated!');
     }
