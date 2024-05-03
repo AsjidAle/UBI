@@ -26,7 +26,7 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        $orders = Order::with(['users', 'products'])->get();
+        $orders = Order::withTrashed()->with(['users', 'products'])->get();
 
         return $this->sendResponse($orders);
     }
@@ -61,7 +61,7 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        $orders = Order::with('products')->where('user', $user->id)->get();
+        $orders = Order::withTrashed()->with('products')->where('user', $user->id)->get();
         return $this->sendResponse($orders);
     }
 

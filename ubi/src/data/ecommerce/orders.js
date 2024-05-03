@@ -66,7 +66,7 @@ export function Orderdatatable({ orders }) {
                 <div className="button-list text-center" >
                     <Row>
                         <Col sm={6}>
-                            <Button disabled={row.fulfiled ? true : false} placement={row.id} onClick={() => click(row.id)} overlay={<Tooltip>Fulfil</Tooltip>}>
+                            <Button disabled={row.deleted_at ? true : row.fulfiled ? true : false} placement={row.id} onClick={() => click(row.id)} overlay={<Tooltip>Fulfil</Tooltip>}>
                                 <i className="ti ti-check"></i>
                             </Button>
                         </Col>
