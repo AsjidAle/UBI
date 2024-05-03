@@ -33,12 +33,21 @@ export const MENUITEMS = [
 				permission: Utils.can('View User'),
 			},
 			{
-				icon: 'ti-shopping-cart-full',
+				icon: 'fa fa-cubes',
 				path: `${process.env.PUBLIC_URL}/products`,
 				type: 'link',
 				active: false,
 				selected: false,
 				title: 'Products',
+				permission: true,//Utils.can('View Products'),
+			},
+			{
+				icon: 'ti-shopping-cart-full',
+				path: `${process.env.PUBLIC_URL}/cart`,
+				type: 'link',
+				active: false,
+				selected: false,
+				title: 'My Cart',
 				permission: true,//Utils.can('View Products'),
 			},
 			{
@@ -49,15 +58,6 @@ export const MENUITEMS = [
 				active: false,
 				selected: false,
 				permission: true,
-			},
-			{
-				path: `${process.env.PUBLIC_URL}/productdeatils`,
-				type: 'link',
-				active: false,
-				selected: false,
-				title: 'Product Details',
-				permission: false,
-				icon: 'fa fa-calendar-times-o',
 			},
 			{
 				icon: 'ti-shopping-cart-full',
