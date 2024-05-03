@@ -79,11 +79,6 @@ const SignUp = () => {
                   <Row className=" row-sm">
                     <Card.Body className="mt-2 mb-2">
                       <img
-                        src={require("../assets/img/brand/logo.png")}
-                        className=" d-lg-none header-brand-img text-start float-start mb-4 auth-light-logo"
-                        alt="logo"
-                      />
-                      <img
                         src={require("../assets/img/brand/logo-light.jpg")}
                         className=" d-lg-none header-brand-img text-start float-start mb-4 auth-dark-logo"
                         alt="logo"
