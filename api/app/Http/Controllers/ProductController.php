@@ -83,6 +83,15 @@ class ProductController extends BaseController
         return $this->sendResponse($product);
     }
 
+    public function myproducts(){
+        $user = auth()->user();
+        if(!$user){
+            return $this->sendResonse('You have not listed product');
+        }
+        $products  = Product::where('seller',$user->id)->get();
+        return $this->sendResponse($products);
+    }
+
     /**
      * Update the specified resource in storage.
      */

@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('myCart', [CartController::class, 'myCart']);
     Route::get('alloffer', [OfferController::class, 'all']);
     Route::get('allprodut', [ProductController::class, 'all']);
+    Route::get('myproducts', [ProductController::class, 'myproducts']);
     Route::get('allprodut', [ProductController::class, 'all']);
     Route::get('myorders', [OrderController::class, 'myOrders']);
     Route::get('fulfil/{id}', [OrderController::class, 'fulfil']);

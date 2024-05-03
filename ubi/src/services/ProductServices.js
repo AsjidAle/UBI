@@ -8,6 +8,9 @@ const ProductServices = {
     gt() {
         return requests.get(`/product`);
     },
+    my(){
+        return requests.get('/myproducts');
+    },
     insert(body) {
         return requests.post(`/product`, body);
     },
