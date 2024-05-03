@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('allprodut', [ProductController::class, 'all']);
     Route::get('myorders', [OrderController::class, 'myOrders']);
     Route::get('fulfil/{id}', [OrderController::class, 'fulfil']);
-    Route::delete('cancel/{id}', [OrderController::class, 'cancel']);
+    Route::delete('cancel/{id}', [OrderController::class, 'destroy']);
     Route::get('total', [ProductController::class, 'total']);
     Route::get('user/me', [UserController::class, 'me']);
     Route::delete('user/activate/{id}', [UserController::class, 'destroy']);

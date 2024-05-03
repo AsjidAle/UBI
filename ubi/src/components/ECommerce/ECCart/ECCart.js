@@ -1,12 +1,66 @@
-import React, { Fragment, useState } from "react";
-import png14 from "../../../assets/img/pngs/14.png";
-import png15 from "../../../assets/img/pngs/15.png";
-import png16 from "../../../assets/img/pngs/16.png";
-import png17 from "../../../assets/img/pngs/17.png";
+import React, { Fragment, useEffect, useState } from "react";
 import png18 from "../../../assets/img/pngs/18.png";
 import png19 from "../../../assets/img/pngs/19.png";
+import png1 from "../../../assets/img/pngs/1.jpg";
+import Utils from "../../../utils/Utils";
+import png01 from "../../../assets/img/pngs/01.jpg";
+import png2 from "../../../assets/img/pngs/fe.png";
+import png02 from "../../../assets/img/pngs/fi.png";
+import png3 from "../../../assets/img/pngs/plantain.jpg";
+import png03 from "../../../assets/img/pngs/Tuber.png";
+import png4 from "../../../assets/img/pngs/Cashewnut.png";
+import png04 from "../../../assets/img/pngs/Coconut.jpg";
+import png5 from "../../../assets/img/pngs/Nuts.jpg";
+import png05 from "../../../assets/img/pngs/Brown_beans.png";
+import png6 from "../../../assets/img/pngs/Yellow_corn.jpg";
+import png06 from "../../../assets/img/pngs/Whole_grains.png";
+import png7 from "../../../assets/img/pngs/Maize.jpg";
+import png07 from "../../../assets/img/pngs/Fresh_Cocoa.jpg";
+import png8 from "../../../assets/img/pngs/Grains.jpg";
+import png08 from "../../../assets/img/pngs/Dried_Cocoa.jpg";
+import png9 from "../../../assets/img/pngs/carrot.jpg";
+import png09 from "../../../assets/img/pngs/bell_pepper.jpg";
+import png10 from "../../../assets/img/pngs/green_beans.jpg";
+import png11 from "../../../assets/img/pngs/tomatoes.jpg";
+import png12 from "../../../assets/img/pngs/Fresh_Cocoa.jpg";
+import png13 from "../../../assets/img/pngs/Garlic.jpg";
+import png14 from "../../../assets/img/pngs/Grains.jpg";
+import png15 from "../../../assets/img/pngs/Habanero_pepper.jpg";
+import png16 from "../../../assets/img/pngs/Maize.jpg";
+import png17 from "../../../assets/img/pngs/Nigerian_Eggplant.png";
+import { Badge, Breadcrumb, Button, Card, Col, Form, Pagination, Row, InputGroup, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Breadcrumb, Button, Card, Col, Row, Table } from "react-bootstrap";
+import CartServices from "../../../services/CartServices";
+import ProductServices from "../../../services/ProductServices";
+
+
+const Productdetails =
+  [
+    { id: 1, ProductId: "Cassava Tuber", Product1: png1, Product2: png1, Productpriceold: "₦25.00", Productdiscountnew: "₦ 25000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Productdiscount: "-33%", Productdiscounttext: "success", discountoffer: "discount", Favorite: "heart", },
+    { id: 2, ProductId: "Walnut", Product1: png2, Product2: png02, Productpriceold: "₦25.00", Productdiscountnew: "₦ 57500", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 3, ProductId: "Sweet Potato ", Product1: png01, Product2: png01, Productpriceold: "₦25.00", Productdiscountnew: "₦ 248500", discountoffer: "discount", Productdiscount: "-50%", Productdiscounttext: "info", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 4, ProductId: "Plantain", Product1: png3, Product2: png3, Productpriceold: "₦25.00", Productdiscountnew: "₦ 10000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 5, ProductId: "Tuber", Product1: png03, Product2: png03, Productpriceold: "₦25.00", Productdiscountnew: "₦ 10000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 6, ProductId: "Green beans", Product1: png4, Product2: png4, Productpriceold: "₦25.00", Productdiscountnew: "₦ 12000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 7, ProductId: "Nigerian Eggplant", Product1: png04, Product2: png04, Productpriceold: "₦25.00", Productdiscountnew: "₦ 12000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 8, ProductId: "Brown Beans", Product1: png05, Product2: png05, Productpriceold: "₦25.00", Productdiscountnew: "₦ 12000", discountoffer: "discount", Productdiscount: "-40%", Productdiscounttext: "danger", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 9, ProductId: "Yellow Corn", Product1: png5, Product2: png5, Productpriceold: "₦25.00", Productdiscountnew: "₦ 10050", discountoffer: "discount", Productdiscount: "-40%", Productdiscounttext: "danger", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 10, ProductId: "Whole Grains", Product1: png06, Product2: png06, Productpriceold: "₦25.00", Productdiscountnew: "₦ 10500", discountoffer: "discount", Productdiscount: "-43%", Productdiscounttext: "warning", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 11, ProductId: "Fresh Cocoa", Product1: png07, Product2: png07, Productpriceold: "₦25.00", Productdiscountnew: "₦ 10500", discountoffer: "discount", Productdiscount: "-43%", Productdiscounttext: "warning", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 12, ProductId: "Maize", Product1: png7, Product2: png7, Productpriceold: "₦25.00", Productdiscountnew: "₦ 584700", discountoffer: "discount", Productdiscount: "-43%", Productdiscounttext: "warning", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 13, ProductId: "Beans", Product1: png8, Product2: png8, Productpriceold: "₦25.00", Productdiscountnew: "₦ 584700", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 14, ProductId: "Dried Cocoa", Product1: png08, Product2: png08, Productpriceold: "₦25.00", Productdiscountnew: "₦ 587400", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 15, ProductId: "Green Beans", Product1: png10, Product2: png10, Productpriceold: "₦25.00", Productdiscountnew: "₦ 24500", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 16, ProductId: "Fresh Tomatoes", Product1: png11, Product2: png11, Productpriceold: "₦25.00", Productdiscountnew: "₦ 25000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 17, ProductId: "Garlic", Product1: png13, Product2: png13, Productpriceold: "₦25.00", Productdiscountnew: "₦ 25000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 18, ProductId: "Carrots", Product1: png9, Product2: png9, Productpriceold: "₦25.00", Productdiscountnew: "₦ 5000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 19, ProductId: "Beans", Product1: png14, Product2: png14, Productpriceold: "₦25.00", Productdiscountnew: "₦ 155000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 20, ProductId: "Habanero pepper", Product1: png15, Product2: png15, Productpriceold: "₦25.00", Productdiscountnew: "₦ 20000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 21, ProductId: "Bell pepper", Product1: png17, Product2: png17, Productpriceold: "₦25.00", Productdiscountnew: "₦ 20000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+    { id: 22, ProductId: "Yellow Corn", Product1: png6, Product2: png06, Productpriceold: "₦25.00", Productdiscountnew: "₦ 20000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Favorite: "heart", },
+  ];
+
+
 let Shoppingcart = [
   { Id: 1, Product: png14, ProductName: "COLLEGE BAG", Color: "Color:", Colorpicker: "Black color", Qty: "Out of stock", Qtytext: "danger", Quantity: 1, Price: "$26.00", },
   { Id: 2, Product: png15, ProductName: "PARTY WEAR SHOES", Color: "Color:", Colorpicker: "Pick", Qty: "In stock", Qtytext: "success", Quantity: 2, Price: "$23.00", },
@@ -14,7 +68,27 @@ let Shoppingcart = [
   { Id: 4, Product: png16, ProductName: "FLOWER POT", Color: "Color:", Colorpicker: " Green and Black color", Qty: "Out of stock", Qtytext: "success", Quantity: 4, Price: "$36.00", },
   { Id: 5, Product: png17, ProductName: "CHAIR", Color: "Color:", Colorpicker: "Green and Black color", Qty: "Out of stock", Qtytext: "success", Quantity: 6, Price: "$24.00", },
   { Id: 6, Product: png18, ProductName: "WATCH", Color: "Color:", Colorpicker: "Green and Black color", Qty: "Out of stock", Qtytext: "danger", Quantity: 7, Price: "$34.00", },];
+
+
+
 function ECCart() {
+  const [items, setItems] = useState([]);
+  const [offers, setOffers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    CartServices.myCart().then((result) => {
+      setItems(result.data);
+      console.log(result.data);
+    });
+
+    ProductServices.gt().then((result) => {
+      console.log(result.data);
+      setProducts(result.data);
+    });
+  }, []);
+
   var Delete = (id1) => {
     let ee = Shoppingcart.filter((e, i) => {
       return e.Id !== id1
@@ -42,20 +116,34 @@ function ECCart() {
   }
   return (
     <Fragment>
-      {/* <!-- Page Header --> */}
-      <div className="page-header">
-        <div>
-          <h2 className="main-content-title tx-24 mg-b-5">Cart</h2>
-          <Breadcrumb>
-            <Breadcrumb.Item href="#">Ecommerce</Breadcrumb.Item>
-            <Breadcrumb.Item active>Cart</Breadcrumb.Item>
-          </Breadcrumb>
+      <Fragment>
+        <div className="page-header">
+          <div>
+            <h2 className="main-content-title tx-24 mg-b-5">My Cart</h2>
+            <Breadcrumb >
+              <Breadcrumb.Item active aria-current="page">Cart</Breadcrumb.Item>
+            </Breadcrumb>
+          </div>
+          {Utils.can('Create Products') &&
+            <div className="d-flex">
+              <div className="justify-content-center">
+                <Button
+                  onClick={() => setShowModal(true)}
+                  variant="primary"
+                  type="button"
+                  className="my-2 btn-icon-text"
+                >
+                  <span className="fa fa-reply-all"></span> &nbsp; Back to Store
+                </Button>
+              </div>
+            </div>
+          }
         </div>
-      </div>
-      {/* <!-- End Page Header --> */}
+
+      </Fragment>
       {/* <!-- Row --> */}
       <Row className="row-sm">
-        <Col lg={12} xl={9} md={12}>
+        <Col lg={12} xl={12} md={12}>
           <Card className="custom-card">
             <Card.Header>
               <h5 className="mb-3 font-weight-bold tx-14">Shopping cart</h5>
@@ -66,26 +154,27 @@ function ECCart() {
                   <thead className="text-muted">
                     <tr className="small text-uppercase">
                       <th scope="col">Product</th>
-                      <th scope="col">Qty</th>
                       <th scope="col" className="wd-120">
-                        Quantity
+                        Price per unit
                       </th>
+                      <th scope="col">Units Remaning</th>
                       <th scope="col" className="wd-120">
-                        Price
+                        Action
                       </th>
                       <th scope="col" className="text-center ">
-                        Action
+                        
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((list, index) => (
-                      <tr key={index} data-index={index}>
+                    {Productdetails.map((list, index) => (
+                      <tr key={index} data-index={index} className={`${items.some(itm => list.id === itm.product) ? '' : 'd-none'}`}>
+                        {/* when (index+1) == product.id then display */}
                         <td>
                           <div className="media">
                             <div className="card-aside-img">
                               <img
-                                src={list.Product}
+                                src={list.Product1}
                                 alt="img"
                                 className="img-sm"
                               />
@@ -93,7 +182,7 @@ function ECCart() {
                             <div className="media-body my-auto">
                               <div className="card-item-desc mt-0">
                                 <h6 className="font-weight-semibold mt-0 text-uppercase">
-                                  {list.ProductName}
+                                  {items.some(itm => itm.product === list.id) ? items.find(itm => itm.product === list.id).products.name : null}
                                 </h6>
                                 <dl className="card-item-desc-1">
                                   <dt>{list.Color} </dt>
@@ -105,38 +194,27 @@ function ECCart() {
                         </td>
                         <td>
                           <p
-                            className={`text-${list.Qtytext} small mb-0 mt-1 tx-12`}
+                            className={`text-${list.Qtytext} small mb-0 mt-1 tx-12 text-center`}
                           >
-                            {list.Qty}
+                            {items.some(itm => itm.product === list.id) ? <><b>₦</b> {items.find(itm => itm.product === list.id).products.price}</> : null}
                           </p>
+                        </td>
+                        <td>
+                          <div className="price-wrap text-center">
+                            <span className="price font-weight-bold tx-16">
+                              {items.some(itm => itm.product === list.id) ? <>{items.find(itm => itm.product === list.id).products.stock}</> : null}
+                            </span>
+                          </div>
                         </td>
                         <td>
                           <div className="handle-counter" id="handleCounter">
                             <Button
-                              variant="light"
-                              className="counter-minus "
-                              onClick={dec}
+                              variant="success"
+                              onClick={() => window.location.pathname = `/productdeatils/${items.some(itm => itm.product === list.id) ? items.find(itm => itm.product === list.id).products.id : null
+                                }`}
                             >
-                              -
+                              Buy Now
                             </Button>
-                            <input
-                              type="text"
-                              defaultValue={0}
-                            />
-                            <Button
-                              variant="light"
-                              className="counter-plus "
-                              onClick={inc}
-                            >
-                              +
-                            </Button>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="price-wrap">
-                            <span className="price font-weight-bold tx-16">
-                              {list.Price}
-                            </span>
                           </div>
                         </td>
                         <td className="text-center">
@@ -157,67 +235,6 @@ function ECCart() {
               </div>
             </Card.Body>
           </Card>
-        </Col>
-        <Col className="col-lg-12 col-xl-3 col-md-12">
-          <Card className="custom-card">
-            <Card.Body>
-              <form>
-                <div className="form-group mb-0">
-                  <label>Have coupon?</label>
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control coupon"
-                      placeholder="Coupon code"
-                    />
-                    <span className="">
-                      <Button
-                        variant="primary" className=" btn-apply coupon">
-                        Apply
-                      </Button>
-                    </span>
-                  </div>
-                </div>
-              </form>
-            </Card.Body>
-          </Card>
-          <div className="card custom-card cart-details">
-            <Card.Body>
-              <h5 className="mb-3 font-weight-bold tx-14">PRICE DETAIL</h5>
-              <dl className="dlist-align">
-                <dt className="">ITEMS 3</dt>
-                <dd className="text-end ms-auto">$ 262.00</dd>
-              </dl>
-              <dl className="dlist-align">
-                <dt>Discount:</dt>
-                <dd className="text-end text-danger ms-auto">- $20.00</dd>
-              </dl>
-              <dl className="dlist-align">
-                <dt>Total price:</dt>
-                <dd className="text-end ms-auto">$252.97</dd>
-              </dl>
-              <dl className="dlist-align">
-                <dt>Delivery:</dt>
-                <dd className="text-end text-success ms-auto">Free</dd>
-              </dl>
-              <hr />
-              <dl className="dlist-align">
-                <dt>Total:</dt>
-                <dd className="text-end  ms-auto">
-                  <strong>$252.97</strong>
-                </dd>
-              </dl>
-              <div className="step-footer">
-                <Link
-                  to={`${process.env.PUBLIC_URL}/ecommerce/products/`}
-                  className="btn btn-success btn-block"
-                  href="ecommerce-products.html"
-                >
-                  Continue Shopping
-                </Link>
-              </div>
-            </Card.Body>
-          </div>
         </Col>
       </Row>
       {/* <!-- End Row --> */}

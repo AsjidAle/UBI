@@ -67,6 +67,9 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
             }
 
             Utils.Toast('success', 'Product Saved Successfully!');
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
             setShowModal(false);
         }
         catch (error) {
@@ -126,8 +129,8 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
                                     <Form.Control placeholder="Enter the Price" required type="number" name="price" defaultValue={product.price} min={1} />
                                 </Form.Group>
                             </div>
-                            <hr />
-                            <div className="form-group">
+                            {/* <hr /> */}
+                            {/* <div className="form-group">
                                 <p className="mg-b-10">Product Photo (preferred size 400 X 150)</p>
                                 <Button
                                     variant="primary"
@@ -151,7 +154,7 @@ const ProductPopup = ({ showModal, setShowModal, id }) => {
                                     <img className="wd-50 ht-35" src={process.env.REACT_APP_UPLOADS_PUBLIC_URL + '/products/' + (signature ? signature : signature)} alt="" />
                                 }
                                 {process.env.REACT_APP_UPLOADS_PUBLIC_URL + 'products/' + signature}
-                            </div>
+                            </div> */}
 
                         </form>
                     }

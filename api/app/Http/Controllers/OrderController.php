@@ -35,7 +35,7 @@ class OrderController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || !$user->hasPermissionTo('Fulfil Order')) {
+        if (!$user || !$user->hasPermissionTo('Update Order Status')) {
             return $this->sendError();
         }
         $order = Order::find($id);
@@ -234,7 +234,7 @@ class OrderController extends BaseController
             return $this->sendError('Invalid Order Id!');
         }
         // if the user placed the order he can cancel or else if he have permission to cancel
-        if($order->user != $user->id || $user->hasPermissionTo('Delete Order')){
+        if($order->user != $user->id || !$user->hasPermissionTo('Delete Order')){
             return $this->sendError();
         }
         if ($order->fulfiled) {

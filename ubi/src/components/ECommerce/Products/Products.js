@@ -90,7 +90,7 @@ function Products() {
             <Breadcrumb.Item active aria-current="page">Products</Breadcrumb.Item>
           </Breadcrumb>
         </div>
-        {Utils.can('Create Products') && false &&
+        {Utils.can('Create Products') &&
           <div className="d-flex">
             <div className="justify-content-center">
               <Button

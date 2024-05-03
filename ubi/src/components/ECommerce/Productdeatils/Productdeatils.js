@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Breadcrumb, Card, Col, Row } from "react-bootstrap";
+import { Breadcrumb, Card, Col, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ProductServices from "../../../services/ProductServices";
 import png1 from "../../../assets/img/pngs/1.jpg";
@@ -30,12 +30,15 @@ import png16 from "../../../assets/img/pngs/Maize.jpg";
 import png17 from "../../../assets/img/pngs/Nigerian_Eggplant.png";
 import OrderServices from "../../../services/OrderServices";
 import Utils from "../../../utils/Utils";
+import CartServices from "../../../services/CartServices";
+import ProductPopup from "../Products/ProductPopup";
 
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1); // Initialize quantity to 1
   const [image, setImage] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   const detail = [
     { id: 1, ProductId: "Cassava Tuber", Product1: png1, Product2: png1, Productpriceold: "₦25.00", Productdiscountnew: "₦ 25000", Addtocart: "Add to cart ", Quickview: "Quick View", ProductRating: "icons", Productdiscount: "-33%", Productdiscounttext: "success", discountoffer: "discount", Favorite: "heart", },
@@ -83,10 +86,14 @@ const ProductDetails = () => {
   const order = async () => {
     // You can now use 'product' and 'quantity' to place the order
     var response = await OrderServices.insert({ 'product': product.id, 'amount': quantity, 'price': (product.price * quantity) });
-    console.log(response.data);
     Utils.Toast('success', response.data);
   }
 
+  const cart = async () => {
+    // You can now use 'product' and 'quantity' to place the order
+    var response = await CartServices.insert({ 'product': product.id});
+    Utils.Toast('success', response.data);
+  }
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value);
     setQuantity(newQuantity);
@@ -101,6 +108,21 @@ const ProductDetails = () => {
             <Breadcrumb.Item>Product Details</Breadcrumb.Item>
           </Breadcrumb>
         </div>
+        {Utils.can('Create Products') &&
+          <div className="d-flex">
+            <div className="justify-content-center">
+              <Button
+                onClick={() => setShowModal(true)}
+                variant="primary"
+                type="button"
+                className="my-2 btn-icon-text"
+              >
+                + Edit Product
+              </Button>
+            </div>
+          </div>
+        }
+        <ProductPopup showModal={showModal} setShowModal={setShowModal} id={product.id} />
       </div>
 
       <Row className="row-sm">
@@ -143,11 +165,20 @@ const ProductDetails = () => {
                     </div>
                   </div>
 
-                  {/* Buy Now Button */}
                   <div className="text-center mt-4 mb-4 btn-list">
-                    <Link to="#" className="btn ripple btn-success" onClick={order}>
-                      <i className="fe fe-credit-card"></i> Buy Now
-                    </Link>
+                    <Row>
+                      <Col sm={3}>
+                        <Button to="#" variant="success" className="btn ripple btn-success" onClick={order}>
+                          <i className="fe fe-credit-card"></i> Buy Now
+                        </Button>
+                      </Col>
+                      <Col sm={4}>
+                        <Button to="#" variant="primary" className="btn btn-warning" onClick={cart}>
+                          <i className="ti ti-shopping-cart-full"></i> &nbsp; Add to Cart
+                        </Button>
+                      </Col>
+                      <Col></Col>
+                    </Row>
                   </div>
                 </Col>
               </Row>

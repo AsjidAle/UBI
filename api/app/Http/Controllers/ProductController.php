@@ -83,12 +83,13 @@ class ProductController extends BaseController
         return $this->sendResponse($product);
     }
 
-    public function myproducts(){
+    public function myproducts()
+    {
         $user = auth()->user();
-        if(!$user){
+        if (!$user) {
             return $this->sendResonse('You have not listed product');
         }
-        $products  = Product::where('seller',$user->id)->get();
+        $products = Product::where('seller', $user->id)->get();
         return $this->sendResponse($products);
     }
 
@@ -99,7 +100,7 @@ class ProductController extends BaseController
     {
         $user = auth()->user();
 
-        if (!$user || $user->hasPermissionTo('Update Products')) {
+        if (!$user || !$user->hasPermissionTo('Update Products')) {
             return $this->sendError();
         }
 
@@ -109,7 +110,7 @@ class ProductController extends BaseController
             return $this->sendError('Invalid Product Id!');
         }
 
-        $validator = Validtor::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'string',
             'stock' => 'min:1',
             'price' => 'integer|min:0.01',

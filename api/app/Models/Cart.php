@@ -12,7 +12,7 @@ class Cart extends Model
         'product', 'user',
     ];
 
-    public function product()
+    public function products()
     {
         return $this->belongsTo(Product::class, 'product');
     }

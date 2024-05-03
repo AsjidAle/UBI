@@ -17,7 +17,7 @@ class CartController extends BaseController
         if (!auth()->user()->hasPermissionTo('View Carts')) {
             return $this->sendError();
         }
-        $cart = Cart::with(['user', 'product'])->all();
+        $cart = Cart::with(['user', 'product'])->get();
         return $this->sendReponse($cart);
     }
 
@@ -28,7 +28,7 @@ class CartController extends BaseController
         if (!$user) {
             return $this - sendError();
         }
-        $cart = Cart::wiht('products')->where('usere')->get();
+        $cart = Cart::with('products')->where('user', $user->id)->get();
         return $this->sendResponse($cart);
     }
 
@@ -44,7 +44,7 @@ class CartController extends BaseController
         }
 
         $validator = Validator::make($request->all(), [
-            'produce' => 'required',
+            'product' => 'required|exists:products,id',
         ]);
 
         if ($validator->fails()) {
@@ -52,8 +52,8 @@ class CartController extends BaseController
         }
         $validated = $validator->validated();
 
-        $cart = Cart::where('user', $user->id)->where('product', $validated->product)->get();
-        if ($cart) {
+        $cart = Cart::where('user', $user->id)->where('product', $request->product)->get();
+        if (!$cart) {
             return $this->sendResponse("Successfully added to Cart!");
         }
 
