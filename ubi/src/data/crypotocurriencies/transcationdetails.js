@@ -71,7 +71,7 @@ export function Basicdatatable({ orders }) {
       sortable: true,
       cell: row => (
         <div>
-          <span className={`status bg-${row.fulfiled ? 'success' : 'danger'}`}></span>
+          <span className={`status bg-${row.deleted_at ? 'danger': row.fulfiled ? 'success' : 'warning'}`}></span>
           {row.fulfiled ? 'Fulfiled' : 'Pending'}
         </div>
       )
