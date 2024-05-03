@@ -416,13 +416,13 @@ function ECDashboard() {
             <Card className="custom-card" style={{ borderLeft: '4px solid green' }}>
               <Card.Body>
                 <div className="card-order">
-                  <h3 className="card-item-icon card-icon">
+                  <h4 className="card-item-icon card-icon">
                     Welcome to Unified Agricultural Export Platform<small>(UBI)</small>, a dynamic ecosystem uniting {data?.totalUsers} individuals dedicated to revolutionizing Nigeria's agricultural export landscape.
                     Rooted in innovation, UBI serves as a catalyst for change, empowering farmers, traders, and stakeholders across the value chain.
                     With a relentless pursuit of excellence, UBI leverages cutting-edge technology to overcome industry challenges, fostering collaboration and driving sustainable growth.
-                    Our impact speaks volumes, having facilitated {data?.fulfiledOrders} successful transactions encompassing {data?.totalproducts} diverse products, propelling the nation towards agricultural prosperity.
-                    Embracing the power of platform-as-a-service (PaaS) solutions, UBI pioneers a new era of connectivity, efficiency, and opportunity in Nigeria's agricultural sector.
-                  </h3>
+                    Our impact speaks volumes, having facilitated <b>{data?.fulfiledOrders}</b> successful transactions encompassing {data?.totalproducts} diverse products, propelling the nation towards agricultural prosperity.
+                    Embracing the power of platform-as-a-service<small>(PaaS)</small> solutions, UBI pioneers a new era of connectivity, efficiency, and opportunity in Nigeria's agricultural sector.
+                  </h4>
                 </div>
                 <h6 className="main-content-label card-order">
                 </h6>
@@ -442,7 +442,7 @@ function ECDashboard() {
               </Card.Header>
               <Card.Body>
                 <div className="card-order">
-                  <h4 className="card-item-icon card-icon">
+                  <h5 className="card-item-icon card-icon">
                     Unified Agricultural Export Platform<small>(UBI)</small> is on a transformative journey,
                     the ultimate ally in elevating Nigeria's agricultural
                     export realm. At the heart of UBI lies our unwavering resolve to harness
@@ -451,7 +451,7 @@ function ECDashboard() {
                     is driven by a clear objective: to amplify productivity, enhance
                     interconnectivity, throughout Nigeria's agriculture domain.
                     Centering on the strategic use of platform as a Service alongside mobile solutions,
-                  </h4>
+                  </h5>
                 </div>
                 <h6 className="main-content-label card-order">
                 </h6>
