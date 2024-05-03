@@ -23,7 +23,7 @@ class OfferController extends BaseController
         $user = auth()->user();
 
         if (!$user || !$user->hasPermissionTo('View Offer')) {
-            return $this->sendError();
+            return $this->sendError('error',"Can't view this Offers",422);
         }
 
         $offers = Offer::with('products')->paginate(100);
@@ -65,7 +65,7 @@ class OfferController extends BaseController
         $offer = Offer::with('products')->find($id);
 
         if (!$offer) {
-            return $this->sendError('Invalid Offer Id!', 404);
+            return $this->sendError('Invalid Offer Id!','', 404);
         }
         return $this->sendResponse($offer);
     }
