@@ -28,9 +28,7 @@ function ECDashboard() {
 
     const fetch = async () => {
       var _data = await DashboardServices.get();
-      if (Utils.can("View Dashboard")) {
-        setData(_data.data);
-      }
+      setData(_data.data);
     }
 
     fetch()
@@ -38,20 +36,20 @@ function ECDashboard() {
 
   return (
     <Fragment>
-      <div className="page-header">
-        <div>
-          <h2 className="main-content-title tx-24 mg-b-5">
-            Welcome To Dashboards
-          </h2>
-          <Breadcrumb>
-            <Breadcrumb.Item active>
-              Dashboard
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-      </div>
       {Utils.can("View Dashboard") &&
         <>
+          <div className="page-header">
+            <div>
+              <h2 className="main-content-title tx-24 mg-b-5">
+                Welcome To Dashboards
+              </h2>
+              <Breadcrumb>
+                <Breadcrumb.Item active>
+                  <span className="text-decoration-underline">Dashboard</span>
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </div>
+          </div>
           <Row className="row-sm">
             <Col sm={12} md={6} lg={6} xl={3}>
               <Card className="custom-card">
@@ -414,8 +412,54 @@ function ECDashboard() {
 
       {!Utils.can("View Dashboard") &&
         <>
-        <h1>Welcome to UBI</h1>
-        <h5>We Help and connect Farmers, Exporters, Importer, Seller, anyone related to the Farming Inudstry</h5>
+          <div className="custom-card mt-5">
+            <Card className="custom-card" style={{ borderLeft: '4px solid green' }}>
+              <Card.Body>
+                <div className="card-order">
+                  <h3 className="card-item-icon card-icon">
+                    Welcome to Unified Agricultural Export Platform<small>(UBI)</small>, a dynamic ecosystem uniting {data?.totalUsers} individuals dedicated to revolutionizing Nigeria's agricultural export landscape.
+                    Rooted in innovation, UBI serves as a catalyst for change, empowering farmers, traders, and stakeholders across the value chain.
+                    With a relentless pursuit of excellence, UBI leverages cutting-edge technology to overcome industry challenges, fostering collaboration and driving sustainable growth.
+                    Our impact speaks volumes, having facilitated {data.fulfilledOrders} successful transactions encompassing {data.products} diverse products, propelling the nation towards agricultural prosperity.
+                    Embracing the power of platform-as-a-service (PaaS) and mobile solutions, UBI pioneers a new era of connectivity, efficiency, and opportunity in Nigeria's agricultural sector.
+                  </h3>
+                </div>
+                <h6 className="main-content-label card-order">
+                </h6>
+              </Card.Body>
+            </Card>
+          </div>
+
+          <div className="custom-card mt-5">
+            <Card className="custom-card" style={{ borderLeft: '4px solid green' }}>
+              <Card.Header className="border-bottom-0 pb-0">
+                <label className="main-content-label mb-2 pt-1">
+                  Our Vision
+                </label>
+                <p className="tx-12 mb-0 text-muted">
+                  Our vision is to revolutionize Nigerian agricultural industry
+                </p>
+              </Card.Header>
+              <Card.Body>
+                <div className="card-order">
+                  <h3 className="card-item-icon card-icon">
+                    Unified Agricultural Export Platform<small>(UBI)</small> is on a transformative journey,
+                    the ultimate ally in elevating Nigeria's agricultural
+                    export realm. At the heart of UBI lies our unwavering resolve to harness
+                    state-of-the-art technology to surmount the obstacles encountered by our
+                    farmers, traders, and all members of the agricultural value chain. UBI
+                    is driven by a clear objective: to amplify productivity, enhance
+                    interconnectivity, throughout Nigeria's agriculture domain.
+                    Centering on the strategic use of platform as a Service alongside mobile solutions,
+                  </h3>
+                </div>
+                <h6 className="main-content-label card-order">
+                </h6>
+              </Card.Body>
+            </Card>
+          </div>
+
+          <button onClick={() => console.log(data)}></button>
         </>
       }
     </Fragment >
