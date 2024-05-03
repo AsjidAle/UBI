@@ -420,8 +420,8 @@ function ECDashboard() {
                     Welcome to Unified Agricultural Export Platform<small>(UBI)</small>, a dynamic ecosystem uniting {data?.totalUsers} individuals dedicated to revolutionizing Nigeria's agricultural export landscape.
                     Rooted in innovation, UBI serves as a catalyst for change, empowering farmers, traders, and stakeholders across the value chain.
                     With a relentless pursuit of excellence, UBI leverages cutting-edge technology to overcome industry challenges, fostering collaboration and driving sustainable growth.
-                    Our impact speaks volumes, having facilitated {data.fulfiledOrders} successful transactions encompassing {data.products} diverse products, propelling the nation towards agricultural prosperity.
-                    Embracing the power of platform-as-a-service (PaaS) and mobile solutions, UBI pioneers a new era of connectivity, efficiency, and opportunity in Nigeria's agricultural sector.
+                    Our impact speaks volumes, having facilitated {data?.fulfiledOrders} successful transactions encompassing {data?.totalproducts} diverse products, propelling the nation towards agricultural prosperity.
+                    Embracing the power of platform-as-a-service (PaaS) solutions, UBI pioneers a new era of connectivity, efficiency, and opportunity in Nigeria's agricultural sector.
                   </h3>
                 </div>
                 <h6 className="main-content-label card-order">
