@@ -5,46 +5,40 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends BaseController
 {
     public function upload(Request $request)
     {
-        $folders = [
-            'products' => 'jpg,jpeg,png,gif',
-        ];
 
         $validator = Validator::make($request->all(), [
-            'attachment' => 'required|mimes:' . $folders[$request->input('folder')] . '|max:10240', // 10MB
+            'attachment' => 'required|max:1024|mimes:jpg,jpeg,png,gif',
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('Validation Errors', $validator->errors(), 422);
         }
 
-        $validatedData = $validator->validated();
-
         if ($request->hasFile('attachment')) {
-            $file = $request->file('attachment');
-            $fileName = time() . '_' . rand(1, 9999999) . '_' . $file->getClientOriginalName();
+            $fileName = time() . '_' . rand(1, 9999999) . '_' . $this->cleanString($request->file('attachment')->getClientOriginalName());
 
-            // Update the folder name based on the request data
-            $folder = $request->input('folder');
-            $filePath = public_path($folder); // Get the absolute path to the directory
-
-            // Example of storing the file
-            $filePath = $file->storeAs($folder, $fileName, 'public'); // File will be stored in the 'public' directory.
+            $filePath = $request->file('attachment')->storeAs('public/uploads', $fileName);
 
             $fileData = [
                 'file' => $fileName,
-                'fileName' => $file->getClientOriginalName(),
-                'filePath' => $filePath,
-                'folder' => $folder,
+                'fileName' => $request->file('attachment')->getClientOriginalName(),
+                'filePath' => $filePath, // Use the generated URL instead of the file path
             ];
 
             return $this->sendResponse($fileData, "File uploaded successfully!");
         }
-        return $this->sendError('Attachment missing');
     }
 
+    private function cleanString($inputString)
+    {
+        $pattern = '/[^a-zA-Z0-9.\-_]/';
+        $cleanString = preg_replace($pattern, '', $inputString);
+        return $cleanString;
+    }
 }

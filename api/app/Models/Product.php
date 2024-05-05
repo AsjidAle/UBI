@@ -15,6 +15,8 @@ class Product extends Model
         'stock',
         'price',
         'description',
+        'image',
+        'seller',
     ];
 
     public function offers()
@@ -22,6 +24,11 @@ class Product extends Model
         return $this->belongsToMany(Offer::class, 'product_offers', 'product', 'offer');
     }
 
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'seller');
+    }
+    
     public function orders()
     {
         return $this->hasMany(Order::class);

@@ -30,6 +30,11 @@ class User extends Authenticatable
         'google_id',
     ];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'seller');
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *
