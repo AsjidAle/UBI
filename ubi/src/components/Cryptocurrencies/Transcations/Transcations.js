@@ -20,7 +20,7 @@ const Transcations = () => {
 			{/* <!-- Page Header --> */}
 			<div className="page-header">
 				<div>
-					<h2 className="main-content-title tx-24 mg-b-5">Histroy	</h2>
+					<h2 className="main-content-title tx-24 mg-b-5">History	</h2>
 					<Breadcrumb className="breadcrumb">
 						<Breadcrumb.Item active>Purchase Record	</Breadcrumb.Item>
 					</Breadcrumb>
@@ -37,7 +37,7 @@ const Transcations = () => {
 						</Card.Header>
 						<Card.Body className="card-body">
 
-							<Basicdatatable orders={orders}/>
+							<Basicdatatable orders={orders} />
 
 						</Card.Body>
 					</Card>
