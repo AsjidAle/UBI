@@ -65,7 +65,7 @@ function Products() {
 
   useEffect(() => {
     const fetch = async () => {
-      var _products = await ProductServices.get();
+      var _products = await ProductServices.gt();
       setProducts(_products.data);
       console.log(_products.data);
 
