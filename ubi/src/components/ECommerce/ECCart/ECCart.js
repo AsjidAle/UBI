@@ -89,7 +89,10 @@ function ECCart() {
     });
   }, []);
 
-  var Delete = (id1) => {
+  var Delete = async (id1) => {
+    console.log(id1);
+    var response = await CartServices.delete(id1);
+    Utils.Toast('success', response.data);
     let ee = Shoppingcart.filter((e, i) => {
       return e.Id !== id1
     })
@@ -162,7 +165,7 @@ function ECCart() {
                         Action
                       </th>
                       <th scope="col" className="text-center ">
-                        
+
                       </th>
                     </tr>
                   </thead>
@@ -219,9 +222,7 @@ function ECCart() {
                         </td>
                         <td className="text-center">
                           <Link to="#"
-                            onClick={function () {
-                              Delete(list.Id);
-                            }}
+                            onClick={() => Delete(list.id)}
                             className="remove-list text-danger tx-20 remove-button"
                             data-abc="true"
                           >

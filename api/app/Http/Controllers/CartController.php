@@ -112,7 +112,7 @@ class CartController extends BaseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
         $user = auth()->user();
 
@@ -120,11 +120,12 @@ class CartController extends BaseController
             return $this->sendError();
         }
 
+        $cart = Cart::where('product', $id)->where('user', $user->id)->first();
         if (!$cart || $cart->user != $user->id) {
-            return $this->sendError('Invalid Id');
+            return $this->sendError('error', 'Invalid Cart Id', 422);
         }
 
         $cart->delete();
-        $this->sendResponse('Item Successfully deleted from Cart!');
+        return $this->sendResponse('Item Successfully removed from Cart!');
     }
 }

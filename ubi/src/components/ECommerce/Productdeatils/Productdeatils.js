@@ -108,7 +108,7 @@ const ProductDetails = () => {
             <Breadcrumb.Item>Product Details</Breadcrumb.Item>
           </Breadcrumb>
         </div>
-        {Utils.can('Create Products') &&
+        {Utils.can('Update Products') &&
           <div className="d-flex">
             <div className="justify-content-center">
               <Button
@@ -167,12 +167,12 @@ const ProductDetails = () => {
 
                   <div className="text-center mt-4 mb-4 btn-list">
                     <Row>
-                      <Col sm={3}>
+                      <Col sm={6}>
                         <Button to="#" variant="success" className="btn ripple btn-success" onClick={order}>
                           <i className="fe fe-credit-card"></i> Buy Now
                         </Button>
                       </Col>
-                      <Col sm={4}>
+                      <Col sm={6}>
                         <Button to="#" variant="primary" className="btn btn-warning" onClick={cart}>
                           <i className="ti ti-shopping-cart-full"></i> &nbsp; Add to Cart
                         </Button>
