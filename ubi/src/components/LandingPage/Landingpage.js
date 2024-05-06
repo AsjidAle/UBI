@@ -3166,7 +3166,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                     <Card.Body className="p-0">
                       <div className="top-footer">
                         <Row>
-                          <Col lg={4} sm={12} md={12} className="reveal revealleft">
+                          <Col lg={5} sm={12} md={12} className="reveal revealleft">
                             <h6>About</h6>
                             <p>Embark on a transformative journey with UBI, your ultimate ally
                               in elevating Nigeria's agricultural export realm. At the heart of
@@ -3175,7 +3175,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                               traders, and all members of the agricultural value chain.
                             </p>
                           </Col>
-                          <Col lg={2} sm={6} md={4} className=" reveal revealleft">
+                          <Col lg={3} sm={6} md={4} className=" reveal revealleft">
                             <h6>Pages</h6>
                             <ul className="mb-5 mb-lg-0 ps-0">
                               <li><>Dashboard</></li>
@@ -3185,18 +3185,17 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                               <li><Link to="#">Other Pages</Link></li>
                             </ul>
                           </Col>
-                          <Col lg={2} sm={6} md={4} className=" reveal revealleft">
+                          <Col lg={3} sm={6} md={5} className=" reveal revealleft">
                             <h6>Information</h6>
                             <ul className="mb-5 mb-lg-0 ps-0">
                               <li><Link to="#">Our Team</Link></li>
                               <li><Link to="#">Contact US</Link></li>
                               <li><Link to="/aboutus/">About</Link></li>
                               <li><Link to="#">Services</Link></li>
-                              <li><Link to="#">Blog</Link></li>
                               <li><Link to="#">Terms and Services</Link></li>
                             </ul>
                           </Col>
-                          <Col lg={4} sm={12} md={4} className="reveal revealleft">
+                          {/* <Col lg={4} sm={12} md={4} className="reveal revealleft">
                             <div>
                               <Link to="#"><img loading="lazy" alt="" className="logo mb-3"
                                 src={require("../../assets/img/brand/logo-light.jpg")} /></Link>
@@ -3212,7 +3211,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                                 </div>
                               </div>
                             </div>
-                          </Col>
+                          </Col> */}
                         </Row>
                       </div>
                       <hr className="mb-0" />
