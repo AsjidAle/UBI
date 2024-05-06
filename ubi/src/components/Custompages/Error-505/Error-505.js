@@ -19,7 +19,7 @@ const Error505 = () => (
                   Try searching below.
                 </h6>
                 <Link
-                    to={`${process.env.PUBLIC_URL}/dashboard/`}
+                    to={`${process.env.PUBLIC_URL}/landingpage/`}
                     className="btn ripple btn-success text-center mb-2"
                   >
                     Back to Home

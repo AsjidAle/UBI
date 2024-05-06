@@ -106,7 +106,7 @@ function Header() {
             </Link>
             <div className="hor-logo">
               <Link
-                to={`${process.env.PUBLIC_URL}/dashboard/`}
+                to={`${process.env.PUBLIC_URL}/landingpage/`}
                 className="main-logo"
               >
                 <img

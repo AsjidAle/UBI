@@ -140,9 +140,9 @@ const Landingpage = () => {
                   alt="logo" />
                 <div className="main-header-center">
                   <div className="responsive-logo">
-                    <Link to={`${process.env.PUBLIC_URL}/Dashboard`}><img src={require("../../assets/img/brand/logo.png")} className="mobile-logo"
+                    <Link to={`${process.env.PUBLIC_URL}/products`}><img src={require("../../assets/img/brand/logo.png")} className="mobile-logo"
                       alt="lo/o" /></Link>
-                    <Link to={`${process.env.PUBLIC_URL}/Dashboard`}><img src={require("../../assets/img/brand/logo-light.jpg")} className="mobile-logo-dark"
+                    <Link to={`${process.env.PUBLIC_URL}/products`}><img src={require("../../assets/img/brand/logo-light.jpg")} className="mobile-logo-dark"
                       alt="logo" /></Link>
                   </div>
                 </div>
@@ -176,7 +176,7 @@ const Landingpage = () => {
 
 
                       <div className="navbar main-sidemenu px-0">
-                        <Link className="main-logo" to={`${process.env.PUBLIC_URL}/Dashboard`}>
+                        <Link className="main-logo" to={`${process.env.PUBLIC_URL}/products`}>
                           <img src={require("../../assets/img/brand/logo.png")} className="header-brand-img desktop-logo"
                             alt="logo" />
                           <img src={require("../../assets/img/brand/logo-light.jpg")}
@@ -198,7 +198,7 @@ const Landingpage = () => {
                             d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
                         </svg></div>
                         <div className="header-nav-right d-none d-lg-block">
-                          <Button onClick={() => window.location.href = "/dashboard"} className="btn ripple btn-min w-sm bg-info me-2"
+                          <Button onClick={() => window.location.href = "/products"} className="btn ripple btn-min w-sm bg-info me-2"
                           >Login
                           </Button>
 

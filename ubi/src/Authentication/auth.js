@@ -7,8 +7,8 @@ import Utils from "../utils/Utils";
 const Auth = () => {
 
   if (Utils.isLoggedIn()) {
-    const dashboard = `${process.env.PUBLIC_URL}/dashboard`;
-    return (<Navigate to={dashboard} />);
+    const landingpage = `${process.env.PUBLIC_URL}/landingpage`;
+    return (<Navigate to={landingpage} />);
   }
 
   return (

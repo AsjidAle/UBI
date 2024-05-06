@@ -16,7 +16,7 @@ const SignIn = () => {
   }
 
   const routeChange = () => {
-    let path = `${process.env.PUBLIC_URL}/dashboard`;
+    let path = `${process.env.PUBLIC_URL}/landingpage`;
     window.location.href = path;
   }
 

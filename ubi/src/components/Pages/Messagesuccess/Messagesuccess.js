@@ -36,7 +36,7 @@ const Messagesuccess = () => (
                   Oops!! You tried to access a page which is not available.
                 </p>
                 <Link
-                  to={`${process.env.PUBLIC_URL}/dashboard/`}
+                  to={`${process.env.PUBLIC_URL}/landingpage/`}
                   className="btn btn-success"
                 >
                   Back to Home

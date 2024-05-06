@@ -16,6 +16,10 @@ import Utils from "../../../utils/Utils";
 function ECDashboard() {
   const [data, setData] = useState();
 
+  if (!Utils.can('View Dashboard')) {
+    window.location.pathname = "/landingpage";
+  };
+
   const ProductsDetails =
     [
       { Productid: "#C234", Productname: png14, Producttext: "Regular Backpack", Productcost: "$14,500", Total: "2,977", Status: "Available", Statustext: "primary", },

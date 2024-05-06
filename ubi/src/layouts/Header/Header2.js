@@ -63,7 +63,7 @@ function Header2() {
       <Navbar expand="lg" className="main-header side-header sticky">
         <Container fluid className="main-container">
           <div className="main-header-left">
-            <Link to={`${process.env.PUBLIC_URL}/Dashboard`}
+            <Link to={`${process.env.PUBLIC_URL}/landingpage`}
               className="main-header-menu-icon"
               href="#"
               id="mainSidebarToggle"
@@ -75,7 +75,7 @@ function Header2() {
               <span></span>
             </Link>
             <div className="hor-logo">
-              <Link className="main-logo" to={`${process.env.PUBLIC_URL}/Dashboard`}>
+              <Link className="main-logo" to={`${process.env.PUBLIC_URL}/landingpage`}>
                 <img src={require("../../assets/img/brand/logo.png")} className="header-brand-img desktop-logo" alt="logo" />
                 <img src={require("../../assets/img/brand/logo-light.jpg")} className="header-brand-img desktop-logo-dark"
                   alt="logo" />
@@ -84,14 +84,14 @@ function Header2() {
           </div>
           <div className="main-header-center">
             <div className="responsive-logo">
-              <Link to={`${process.env.PUBLIC_URL}/Dashboard`}>
+              <Link to={`${process.env.PUBLIC_URL}/landingpage`}>
                 <img
                   src={require("../../assets/img/brand/logo.png")}
                   className="mobile-logo"
                   alt="logo"
                 />
               </Link>
-              <Link to={`${process.env.PUBLIC_URL}/Dashboard`}>
+              <Link to={`${process.env.PUBLIC_URL}/landingpage`}>
                 <img
                   src={require("../../assets/img/brand/logo-light.jpg")}
                   className="mobile-logo-dark"

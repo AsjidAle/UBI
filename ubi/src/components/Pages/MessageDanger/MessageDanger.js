@@ -24,7 +24,7 @@ function MessageDanger() {
 										</svg>
 										<h3 className="mt-4 mb-3">Message Danger</h3>
 										<p className="tx-18 text-white-50">Oops!! You tried to access a page which is not available.</p>
-										<Link to={`${process.env.PUBLIC_URL}/dashboard/`} className="btn btn-danger">Back to Home</Link>
+										<Link to={`${process.env.PUBLIC_URL}landingpage/`} className="btn btn-danger">Back to Home</Link>
 									</div>
 								</Card.Body>
 							</Card>
