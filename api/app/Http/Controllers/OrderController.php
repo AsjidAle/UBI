@@ -76,7 +76,6 @@ class OrderController extends BaseController
             return $this->sendError();
         }
 
-        \Illuminate\Support\Facades\Log::info($request->all());
         $validator = Validator::make($request->all(), [
             'price' => 'required|integer|min:1',
             'amount' => 'required|integer|min:1',
@@ -117,10 +116,11 @@ class OrderController extends BaseController
         if ($product->stock < $request['amount']) {
             return $this->sendError('Not Enough Stock');
         }
-
+        
         $product->stock = $product->stock - $request['amount'];
-
+        $validatedData['address'] = 'x';
         $order = Order::create($validatedData);
+        $product->save();
         return $this->sendResponse("Order with id #{$order->id} Successfully placed!");
     }
 
@@ -234,7 +234,7 @@ class OrderController extends BaseController
             return $this->sendError('Invalid Order Id!');
         }
         // if the user placed the order he can cancel or else if he have permission to cancel
-        if($order->user != $user->id || !$user->hasPermissionTo('Delete Order')){
+        if ($order->user != $user->id || !$user->hasPermissionTo('Delete Order')) {
             return $this->sendError();
         }
         if ($order->fulfiled) {

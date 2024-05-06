@@ -29,7 +29,7 @@ import png17 from "../../../assets/img/pngs/Nigerian_Eggplant.png";
 import { Badge, Breadcrumb, Button, Card, Col, Form, Pagination, Row, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ProductPopup from './ProductPopup';
-// import ProductServices from "../../../services/ProductServices";
+import ProductServices from "../../../services/ProductServices";
 // import OfferServices from "../../../services/OfferServices";
 
 const Productdetails =
@@ -65,9 +65,9 @@ function Products() {
 
   useEffect(() => {
     const fetch = async () => {
-      // var _products = await ProductServices.get();
-      // setProducts(_products.data);
-      // console.log(_products.data);
+      var _products = await ProductServices.get();
+      setProducts(_products.data);
+      console.log(_products.data);
 
       // var _offers = await OfferServices.get();
       // setOffers(_offers);
@@ -147,20 +147,24 @@ function Products() {
       <Row className="row-sm">
         <Col md={12} xl={12}>
           <Row className="row-sm">
-            {Productdetails.map((items, index) => (
+            {products.map((items, index) => (
               <Col md={6} lg={6} xl={4} sm={6} key={index} data-index={index}>
                 <Card className="custom-card">
                   <div className="p-0 ht-100p">
                     <div className="product-grid">
                       <div className="product-image" style={{ height: '30vh' }}>
                         <Link to={`${process.env.PUBLIC_URL}/productdeatils/${items.id}`} className="image">
-                          <img className="pic-1" alt="product1" src={items.Product1} />
+                          <img
+                            className="pic-1"
+                            alt="product1"
+                            src={Productdetails.some(prod => prod.id === items.id) ? Productdetails.find(prod => prod.id === items.id).Product1 : ''}
+                          />
                         </Link>
                       </div>
                       <div className="product-content">
-                        <h3 className="title"><Link to="#">{items.ProductId}</Link></h3>
+                        <h3 className="title"><Link to="#">{items.name}</Link></h3>
                         <div className="price text-danger">
-                          {items.Productdiscountnew}
+                          {items.price}
                         </div>
                         <br />
                         {/* <div className="price">
