@@ -60,14 +60,15 @@ const NotificationPopup = ({ showModal, setShowModal, id }) => {
             const formData = new FormData(event.target);
             const jsonObject = Utils.formDataToJSON(formData);
 
+            let response = null;
             if (id) { // update
-                let row = await NotificationServices.update(id, jsonObject);
+                response = await NotificationServices.update(id, jsonObject);
             }
             else { //insert
-                let row = await NotificationServices.insert(jsonObject);
+                response = await NotificationServices.insert(jsonObject);
             }
 
-            Utils.Toast('success', 'Product Saved Successfully!');
+            Utils.Toast('success', response.data);
             setShowModal(false);
         }
         catch (error) {
