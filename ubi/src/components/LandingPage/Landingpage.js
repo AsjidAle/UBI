@@ -140,7 +140,7 @@ const Landingpage = () => {
                   alt="logo" />
                 <div className="main-header-center">
                   <div className="responsive-logo">
-                    <Link to={`${process.env.PUBLIC_URL}/products`}><img src={require("../../assets/img/brand/logo.png")} className="mobile-logo"
+                    <Link to={`${process.env.PUBLIC_URL}/products`}><img src={require("../../assets/img/brand/logo-light.jpg")} className="mobile-logo"
                       alt="lo/o" /></Link>
                     <Link to={`${process.env.PUBLIC_URL}/products`}><img src={require("../../assets/img/brand/logo-light.jpg")} className="mobile-logo-dark"
                       alt="logo" /></Link>
@@ -214,13 +214,13 @@ const Landingpage = () => {
                     <Col xl={6} lg={6} className="animation-zidex pos-relative">
                       {/* <h1 className="text-start fw-bold">We Help to Build Your Dream Project with <q>UBI</q> !</h1> */}
                       <h1 className="text-start fw-bold">Empowering Agriculture, Connecting Farmers & Sellers for a Sustainable Future</h1>
-                      <h6 className="pb-3">
-                        Welcome to UBI, where we bridge the gap between farmers and sellers, cultivating a thriving ecosystem
+                      {/* <h6 className="pb-3 d-sm-none"> */}
+                      <h6 className="pb-3 d-none d-md-block col-8">
+                        Bridge the gap between farmers and sellers, cultivating a thriving ecosystem
                         that fosters growth, sustainability, and prosperity. Our platform serves as a catalyst for positive
                         change in the agricultural industry, offering a comprehensive suite of services designed to empower
-                        farmers and connect them with buyers, suppliers, and partners. We provide the tools,
-                        resources, and support you need to succeed. Join us in building a brighter future for agriculture—one
-                        connection at a time.
+                        farmers and connect them with buyers, suppliers, and partners. We provide resources, and support you
+                        need to succeed. Join us in building a brighter future for agriculture—one connection at a time.
                       </h6>
 
                       <Link to="/products" className="btn ripple btn-min w-lg mb-3 me-2 btn-light"><i
