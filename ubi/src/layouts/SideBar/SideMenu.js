@@ -101,7 +101,7 @@ export const MENUITEMS = [
 				active: false,
 				selected: false,
 				title: 'Notifications',
-				permission: true,
+				permission: Utils.can('View Announcement'),
 				icon: 'fa fa-bookmark',
 			},
 		]
