@@ -93,6 +93,9 @@ function ECCart() {
     console.log(id1);
     var response = await CartServices.delete(id1);
     Utils.Toast('success', response.data);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
     let ee = Shoppingcart.filter((e, i) => {
       return e.Id !== id1
     })
