@@ -53,15 +53,15 @@ export const Slicksider = () => {
                     </div>
                     <div>
                         <img alt="web5" src={require("../../assets/landing/web/5.png")} />
-                        <h5 className="mt-3 text-white">Ready to Eat</h5>
-                    </div>
-                    <div>
-                        {/* <img alt="web6" src={require("../../assets/landing/web/6.png")} /> */}
-                        {/* <h5 className="mt-3 text-white">Monitored Items</h5> */}
+                        <h5 className="mt-3 text-white">Edible</h5>
                     </div>
                     <div>
                         <img alt="web6" src={require("../../assets/landing/web/6.png")} />
                         <h5 className="mt-3 text-white">Monitored Items</h5>
+                    </div>
+                    <div>
+                        <img alt="web6" src={require("../../assets/landing/web/7.png")} />
+                        <h5 className="mt-3 text-white">Trending</h5>
                     </div>
                 </Slider>
             </div>

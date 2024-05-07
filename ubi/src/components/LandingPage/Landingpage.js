@@ -3219,8 +3219,7 @@ C431.3,1830.2,378.4,1777.3,378.4,1712z" />
                         <Row>
                           <Col md={12} sm={12}>
                             Copyright © <span id="year"></span>
-                            <Link to="#">UBI</Link>. Designed with <span className="fa fa-heart text-danger"></span> by
-                            <Link to="mailto:your.asjidale@gmail.com"> asjidale.</Link> All rights reserved.
+                            <Link to="#">UBI</Link>.All rights reserved.
                           </Col>
                         </Row>
                       </footer>
