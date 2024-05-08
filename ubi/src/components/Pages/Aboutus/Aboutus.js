@@ -60,13 +60,13 @@ const Aboutus = () => (
                   Our comprehensive suite of tailored tools and services is meticulously designed to meet
                   the unique needs of Nigeria's agricultural export market. Whether you're an aspiring farmer
                   seeking to expand your market reach, an exporter in pursuit of reliable suppliers, or a
-                  logistics provider aiming to optimize freight routes, AgroNex is here to support you.
+                  logistics provider aiming to optimize freight routes, UBI is here to support you.
                   Renowned for our user-friendly interfaces, robust features, and commitment to innovation,
                   we're the premier choice for all your agricultural exporting endeavors.
                 </p>
                 <p>
-                  Embark on a transformative journey with AgroNex, your ultimate ally in elevating
-                  Nigeria's agricultural export realm. At the heart of AgroNex lies our unwavering
+                  Embark on a transformative journey with UBI, your ultimate ally in elevating
+                  Nigeria's agricultural export realm. At the heart of UBI lies our unwavering
                   resolve to harness state-of-the-art technology to surmount the obstacles encountered
                   by our farmers, traders, and all members of the agricultural value chain.
                 </p>
@@ -165,7 +165,7 @@ const Aboutus = () => (
                 <div className="ms-4">
                   <h5 className="tx-medium">Team Work for Better Results !</h5>
                   <p>
-                    Teamwork for Better Results is our guiding principle at AgroNex. We believe in the power of
+                    Teamwork for Better Results is our guiding principle at UBI. We believe in the power of
                     collaboration and synergy to achieve greater success for farmers, traders, and stakeholders
                     across Nigeria's agricultural sector. Together, we strive to cultivate a thriving ecosystem
                     where everyone can flourish.
@@ -194,7 +194,7 @@ const Aboutus = () => (
                 <div className="ms-4">
                   <h5 className="tx-medium">Best Quality !</h5>
                   <p>
-                    Best Quality is at the core of everything we do at AgroNex. From our innovative solutions
+                    Best Quality is at the core of everything we do at UBI. From our innovative solutions
                     to our dedicated support, we are committed to delivering excellence in every aspect of
                     our service. With a focus on quality, we aim to empower our users and elevate standards
                     across Nigeria's agricultural landscape.
